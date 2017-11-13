@@ -3,10 +3,14 @@ import logo from "./logo.svg";
 import "./App.css";
 
 class App extends Component {
+  uploadImage = event => {
+    console.log(event.target.files[0]);
+  };
+
   render() {
     return (
       <div className="App">
-        <h1>First screen</h1>
+        <input onChange={this.uploadImage} type="file" accept="image/*" />
       </div>
     );
   }
