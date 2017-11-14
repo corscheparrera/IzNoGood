@@ -4,7 +4,7 @@ const database = admin.database;
 var fs = require("fs");
 var parse = require("csv-parse");
 var fs = require("fs");
-var serviceAccount = require("./key.json");
+var serviceAccount = require("./firebase_key.json");
 
 // Import Admin SDK
 admin.initializeApp({
@@ -16,9 +16,9 @@ let x = fs.readFileSync("list.csv");
 x = x.toString().split("\n");
 x = x.map(r => r.replace("\r", "").split(","));
 
-// Get a database reference to our blog
+// Get a database reference
 var db = admin.database();
-var ref = db.ref("ingredients");
+var ref = db.ref("chemicals");
 
 var populate = function() {
   x.map(data => {

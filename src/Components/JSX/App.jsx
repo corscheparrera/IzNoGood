@@ -30,6 +30,13 @@ class App extends Component {
           .then(() => this.send2GoogleVision())
       );
   };
+  storeGoogleVisionRes = visionString => {
+    // Get a database reference
+    var db = fire.database();
+    var ref = db.ref("ingredients");
+
+    ref.push(visionString);
+  };
 
   updateState = url => {
     this.setState({ uploadImageUrl: url });
@@ -59,9 +66,9 @@ class App extends Component {
       body: JSON.stringify(requestObj)
     })
       .then(res => res.json())
-      .then(res => {
-        console.log(res);
-      });
+      .then(data =>
+        this.storeGoogleVisionRes(data.responses["0"].fullTextAnnotation.text)
+      );
   };
 
   render() {
