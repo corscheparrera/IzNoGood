@@ -13,7 +13,10 @@ admin.initializeApp({
 });
 
 let x = fs.readFileSync("list.csv");
-x = x.toString().split("\n");
+x = x
+  .toString()
+  .toLowerCase()
+  .split("\n");
 x = x.map(r => r.replace("\r", "").split(","));
 
 // Get a database reference
