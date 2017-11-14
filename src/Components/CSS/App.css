@@ -1,22 +1,17 @@
-Button > svg {
-  width: 25px;
-  vertical-align: middle;
-  margin-right: 8px;
-  opacity: 0.7;
-  fill: #2f3042;
-  transition: opacity, 0.3s, ease-in-out;
-}
-
-.btn-buttonUpload {
+.fileUpload {
   margin-top: 30vh;
-  border: 2px dashed rgba(128, 128, 128, 0.4) !important;
-  color: #555 !important;
-  background-color: #dddddd;
+  padding-top: 20px;
+  border: 2px dashed rgba(177, 13, 201, 1) !important;
+  color: #b10dc9 !important;
+
   width: 230px;
   height: 150px;
-  transition: background-color, 0.3s, ease-in-out;
 }
 
-.btn-buttonUpload:focus {
+.fileUpload:focus {
   outline: none !important;
+}
+
+.displayNone {
+  display: none;
 }
