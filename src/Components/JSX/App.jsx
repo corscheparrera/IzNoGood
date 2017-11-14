@@ -1,9 +1,15 @@
-import React, { Component } from "react";
-import "../CSS/App.css";
 import * as firebase from "firebase";
+import React, { Component } from "react";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
+import "../CSS/App.css";
 import "bootstrap/dist/css/bootstrap.css";
 import { Grid } from "react-bootstrap";
 import InputFile from "./InputFile.jsx";
+import NavigationForTests from "./NavigationForTests";
+import ImageLoading from "./ImageLoading";
+import TestSucceeded from "./TestSucceeded";
+import TestFailed from "./TestFailed";
+import TestUndefined from "./TestUndefined";
 
 // Initialize Firebase
 var config = {
@@ -22,7 +28,10 @@ const storageRef = firebase.storage();
 class App extends Component {
   constructor() {
     super();
-    this.state = {};
+    this.state = {
+      imagePreview:
+        "https://firebasestorage.googleapis.com/v0/b/iznogood-185815.appspot.com/o/IMG_5504%202.jpg?alt=media&token=554cc430-9b44-49c4-9512-535797197748"
+    };
   }
 
   uploadImage = event => {
@@ -76,9 +85,30 @@ class App extends Component {
 
   render() {
     return (
-      <Grid>
-        <InputFile updateUploadImage={this.uploadImage} />
-      </Grid>
+      <BrowserRouter>
+        <div>
+          <NavigationForTests />
+
+          <Route
+            exact
+            path="/"
+            render={() => (
+              <Grid>
+                <InputFile updateUploadImage={this.uploadImage} />
+              </Grid>
+            )}
+          />
+
+          <Route
+            exact
+            path="/ImageLoading"
+            render={() => <ImageLoading url={this.state.imagePreview} />}
+          />
+          <Route exact path="/TestSucceeded" component={TestSucceeded} />
+          <Route exact path="/TestFailed" component={TestFailed} />
+          <Route exact path="/TestUndefined" component={TestUndefined} />
+        </div>
+      </BrowserRouter>
     );
   }
 }
