@@ -1,6 +1,9 @@
 import React, { Component } from "react";
 import "bootstrap/dist/css/bootstrap.css";
-import { Button, Grid, Row, Col } from "react-bootstrap";
+import { Button, Row, Col } from "react-bootstrap";
+import { bootstrapUtils } from "react-bootstrap/lib/utils";
+bootstrapUtils.addStyle(Button, "buttonUpload");
+
 class InputFile extends Component {
   render() {
     return (

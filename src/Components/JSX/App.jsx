@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import "../CSS/App.css";
 import * as firebase from "firebase";
 import "bootstrap/dist/css/bootstrap.css";
-import { Button, Grid, Row, Col } from "react-bootstrap";
+import { Grid } from "react-bootstrap";
 import InputFile from "./InputFile.jsx";
 
 // Initialize Firebase
