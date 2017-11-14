@@ -18,7 +18,8 @@ class App extends Component {
 
   handleInput = event => {
     const file = event.target.files[0];
-    return storageRef
+    if (!file) return;
+    storageRef
       .ref()
       .child(`${file.name}`)
       .put(file)
@@ -27,9 +28,16 @@ class App extends Component {
           .ref()
           .child(`${file.name}`)
           .getDownloadURL()
-          .then(url => this.updateState(url))
-          .then(() => this.send2GoogleVision())
-          .then(() => this.getChemicals())
+          .then(url => this.setState({ uploadImageUrl: url }))
+          .then(this.send2GoogleVision)
+          .then(res => res.json())
+          .then(data =>
+            this.storeGoogleVisionRes(
+              data.responses["0"].fullTextAnnotation.text
+            )
+          )
+          .then(this.getChemicals)
+          .then(this.lookForRisk)
       );
   };
 
@@ -43,10 +51,6 @@ class App extends Component {
       .then(() =>
         this.setState({ ingredients: visionString.replace("\n", "") })
       );
-  };
-
-  updateState = url => {
-    this.setState({ uploadImageUrl: url });
   };
 
   send2GoogleVision = () => {
@@ -68,28 +72,19 @@ class App extends Component {
         }
       ]
     };
-    fetch(url, {
+    return fetch(url, {
       method: "POST",
       body: JSON.stringify(requestObj)
-    })
-      .then(res => res.json())
-      .then(data => {
-        console.log("last .then fetch google2vision");
-        return this.storeGoogleVisionRes(
-          data.responses["0"].fullTextAnnotation.text
-        );
-      });
-    console.log("finish send2googlevision");
+    });
   };
 
   getChemicals = () => {
     var chemicalsRef = db.ref("chemicals");
-    chemicalsRef.once("value").then(x => this.lookForRisk(x.val()));
+    return chemicalsRef.once("value").then(x => x.val());
   };
   lookForRisk = data => {
     var chemicals = Object.keys(data);
-    console.log(chemicals);
-    console.log(this.state.ingredients);
+
     chemicals.map(chem => {
       if (chem.includes(this.state.ingredients)) {
         console.log("HEY DUDE, WATCH OUT, " + chem + " IS GONNA KILL U!");
