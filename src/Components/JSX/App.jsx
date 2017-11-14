@@ -4,18 +4,8 @@ import * as firebase from "firebase";
 import "bootstrap/dist/css/bootstrap.css";
 import { Grid } from "react-bootstrap";
 import InputFile from "./InputFile.jsx";
+import fire from "./Firebase.jsx";
 
-// Initialize Firebase
-var config = {
-  apiKey: "AIzaSyCI9p3KGB0UwBoqnYEZzm2tqSo3I12TfhA",
-  authDomain: "iznogood-185815.firebaseapp.com",
-  databaseURL: "https://iznogood-185815.firebaseio.com",
-  projectId: "iznogood-185815",
-  storageBucket: "iznogood-185815.appspot.com",
-  messagingSenderId: "510010763162"
-};
-
-firebase.initializeApp(config);
 const storageRef = firebase.storage();
 // const databaseRef = firebase.database();
 
