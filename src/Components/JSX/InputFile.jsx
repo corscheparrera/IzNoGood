@@ -1,8 +1,6 @@
 import React, { Component } from "react";
 import "bootstrap/dist/css/bootstrap.css";
 import { Button, Row, Col, FormGroup, FormControl } from "react-bootstrap";
-import { bootstrapUtils } from "react-bootstrap/lib/utils";
-bootstrapUtils.addStyle(Button, "buttonUpload");
 
 class InputFile extends Component {
   render() {
@@ -17,7 +15,10 @@ class InputFile extends Component {
             />
 
             <FormGroup className="displayNone">
-              <FormControl type="file" />
+              <FormControl
+                type="file"
+                onChange={this.props.updateUploadImage}
+              />
             </FormGroup>
             <h3> Upload ingredients</h3>
           </label>

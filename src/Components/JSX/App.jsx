@@ -77,7 +77,7 @@ class App extends Component {
   render() {
     return (
       <Grid>
-        <InputFile />
+        <InputFile updateUploadImage={this.uploadImage} />
       </Grid>
     );
   }
