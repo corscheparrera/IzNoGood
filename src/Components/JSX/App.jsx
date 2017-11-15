@@ -21,7 +21,7 @@ class App extends Component {
     super();
     this.state = {
       isLoading: false,
-      ingredients: "",
+      ingredients: [],
       uploadImageUrl: "",
       presentChemicals: [],
       undefinedView: false
@@ -63,14 +63,18 @@ class App extends Component {
   };
 
   storeGoogleVisionRes = visionString => {
-    var string = visionString.toLowerCase();
+    var ingredients = visionString
+      .toLowerCase()
+      .replace(/(\r\n|\n|\r)/gm, " ")
+      .split(",");
+
     // Get a database reference
     var ref = db.ref("userInputs");
     ref
       .set({
-        ingredients: string
+        ingredients: ingredients
       })
-      .then(() => this.setState({ ingredients: string }));
+      .then(() => this.setState({ ingredients: ingredients }));
   };
 
   send2GoogleVision = () => {
@@ -106,25 +110,25 @@ class App extends Component {
     var chemicals = Object.keys(data);
 
     chemicals.map(chem => {
-      console.log("this is input " + this.state.ingredients);
-      console.log("chem " + chem);
-      if (this.state.ingredients.includes(chem)) {
-        console.log("HEY DUDE, WATCH OUT, " + chem + " IS GONNA KILL U!");
-        this.setState({
-          presentChemicals: this.state.presentChemicals.concat({
-            chemical: chem,
-            categorie: data[chem].categorie,
-            reference: data[chem].reference
-          })
-        });
-      }
+      this.state.ingredients.map(ingr => {
+        if (ingr.includes(chem)) {
+          console.log("HEY DUDE, WATCH OUT, " + chem + " IS GONNA KILL U!");
+          this.setState({
+            presentChemicals: this.state.presentChemicals.concat({
+              chemical: chem,
+              categorie: data[chem].categorie,
+              reference: data[chem].reference
+            })
+          });
+        }
+      });
     });
   };
 
   clearState = () => {
     this.setState({
       isLoading: false,
-      ingredients: "",
+      ingredients: [],
       uploadImageUrl: "",
       presentChemicals: [],
       undefinedView: false
