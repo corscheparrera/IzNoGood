@@ -1,8 +1,22 @@
 import React, { Component } from "react";
+import { Nav, Navbar, NavItem } from "react-bootstrap";
+import { LinkContainer } from "react-router-bootstrap";
+// import Undefined from "../../icons/";
+import { Button } from "react-bootstrap";
 
 class TestUndefined extends Component {
   render() {
-    return <div />;
+    return (
+      <div>
+        <h4>
+          We couldn't scan your ingredients. Please try to reupload a better
+          picture or visit our full list of ingredients to check them
+        </h4>
+        <LinkContainer to="/">
+          <NavItem eventKey={0}>InFile</NavItem>
+        </LinkContainer>
+      </div>
+    );
   }
 }
 
