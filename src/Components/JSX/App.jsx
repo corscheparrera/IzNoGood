@@ -25,7 +25,7 @@ class App extends Component {
       ingredients: "",
       uploadImageUrl: "",
       warningView: false,
-      succeedView: false,
+      noWarning: false,
       undefinedView: false
     };
   }
@@ -108,7 +108,9 @@ class App extends Component {
     chemicals.map(chem => {
       if (chem.includes(this.state.ingredients)) {
         console.log("HEY DUDE, WATCH OUT, " + chem + " IS GONNA KILL U!");
-        return;
+        () => this.setState({ warningView: true });
+      } else {
+        () => this.setState({ noWarning: true });
       }
     });
   };
