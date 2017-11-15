@@ -64,13 +64,14 @@ class App extends Component {
   };
 
   storeGoogleVisionRes = visionString => {
+    var string = visionString.toLowerCase();
     // Get a database reference
     var ref = db.ref("userInputs");
     ref
       .set({
-        ingredients: visionString
+        ingredients: string
       })
-      .then(() => this.setState({ ingredients: visionString }));
+      .then(() => this.setState({ ingredients: string }));
   };
 
   send2GoogleVision = () => {
@@ -106,7 +107,9 @@ class App extends Component {
     var chemicals = Object.keys(data);
 
     chemicals.map(chem => {
-      if (chem.includes(this.state.ingredients)) {
+      console.log("this is input " + this.state.ingredients);
+      console.log("chem " + chem);
+      if (this.state.ingredients.includes(chem)) {
         console.log("HEY DUDE, WATCH OUT, " + chem + " IS GONNA KILL U!");
         this.setState({
           presentChemicals: this.state.presentChemicals.concat({
