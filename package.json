@@ -4,8 +4,11 @@
   "private": true,
   "dependencies": {
     "bootstrap": "^3.3.7",
+    "express": "^4.16.2",
     "firebase": "^4.6.2",
     "firebase-admin": "^5.5.0",
+    "path": "^0.12.7",
+    "quagga": "^0.12.1",
     "react": "^16.1.1",
     "react-bootstrap": "^0.31.5",
     "react-dom": "^16.1.1",

@@ -5,6 +5,7 @@ import "bootstrap/dist/css/bootstrap.css";
 import { Grid } from "react-bootstrap";
 import InputFile from "./InputFile.jsx";
 import fire from "./Firebase.jsx";
+import Barcode from "./Barcode.jsx";
 
 const storageRef = firebase.storage();
 const db = fire.database();
@@ -13,7 +14,11 @@ const db = fire.database();
 class App extends Component {
   constructor() {
     super();
-    this.state = { ingredients: "" };
+    this.state = {
+      isLoading: false,
+      ingredients: "",
+      uploadImageUrl: ""
+    };
   }
 
   handleInput = event => {
@@ -29,11 +34,13 @@ class App extends Component {
           .child(`${file.name}`)
           .getDownloadURL()
           .then(url => this.setState({ uploadImageUrl: url }))
+          .then(this.setState({ isLoading: true }))
           .then(this.send2GoogleVision)
+          .then(this.setState({ isLoading: false }))
           .then(res => res.json())
           .then(data =>
             this.storeGoogleVisionRes(
-              data.responses["0"].fullTextAnnotation.text
+              data.responses["0"].fullTextAnnotation.text.replace("\n", "")
             )
           )
           .then(this.getChemicals)
@@ -48,9 +55,7 @@ class App extends Component {
       .set({
         ingredients: visionString
       })
-      .then(() =>
-        this.setState({ ingredients: visionString.replace("\n", "") })
-      );
+      .then(() => this.setState({ ingredients: visionString }));
   };
 
   send2GoogleVision = () => {
