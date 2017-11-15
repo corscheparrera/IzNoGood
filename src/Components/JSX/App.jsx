@@ -143,7 +143,9 @@ class App extends Component {
               } else if (this.state.undefinedView) {
                 return <TestUndefined reset={this.clearState} />;
               } else if (this.state.presentChemicals.length >= 1) {
-                return <TestFailed />;
+                return (
+                  <TestFailed presentChemicals={this.state.presentChemicals} />
+                );
               } else if (
                 this.state.uploadImageUrl &&
                 !this.state.presentChemicals.length

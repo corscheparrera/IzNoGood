@@ -15,6 +15,12 @@ const WrapperColumn = styled.div`
 `;
 
 class TestSucceeded extends Component {
+  displayChemicals = item => {
+    return (
+      <li>{`${item.chemical} is a ${item.categorie}. ${item.reference}`}</li>
+    );
+  };
+
   render() {
     return (
       <WrapperColumn>
@@ -23,10 +29,7 @@ class TestSucceeded extends Component {
         </FailedText>
         <img src={Warning} height="150px" alt="" />
         <div>
-          <ul>
-            <li>Benzyne of Methylene is an allergen</li>
-            <li>Glycerinol is an endocrinian perturbator - banned in UE</li>
-          </ul>
+          <ul>{this.props.presentChemicals.map(this.displayChemicals)}</ul>
         </div>
         <Button> Want to save this product to remember ? </Button>
         <a href="">If you want to know more on the ingredients we check</a>
