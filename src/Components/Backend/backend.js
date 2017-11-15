@@ -26,7 +26,8 @@ var ref = db.ref("chemicals");
 var populate = function() {
   x.map(data => {
     ref.child(data[0]).set({
-      categorie: data[1]
+      categorie: data[1],
+      reference: "European commission of Health"
     });
   });
 };

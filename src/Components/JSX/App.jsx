@@ -24,8 +24,7 @@ class App extends Component {
       isLoading: false,
       ingredients: "",
       uploadImageUrl: "",
-      warningView: false,
-      succeedView: false,
+      presentChemicals: [],
       undefinedView: false
     };
   }
@@ -46,11 +45,18 @@ class App extends Component {
           .then(this.setState({ isLoading: true }))
           .then(this.send2GoogleVision)
           .then(res => res.json())
-          .then(data =>
-            this.storeGoogleVisionRes(
-              data.responses["0"].fullTextAnnotation.text.replace("\n", "")
-            )
-          )
+          .then(data => {
+            if (
+              Object.keys(data.responses["0"]).length === 0 &&
+              data.responses["0"].constructor === Object
+            ) {
+              this.setState({ undefinedView: true });
+            } else {
+              this.storeGoogleVisionRes(
+                data.responses["0"].fullTextAnnotation.text.replace("\n", "")
+              );
+            }
+          })
           .then(this.getChemicals)
           .then(this.lookForRisk)
       );
@@ -101,7 +107,13 @@ class App extends Component {
     chemicals.map(chem => {
       if (chem.includes(this.state.ingredients)) {
         console.log("HEY DUDE, WATCH OUT, " + chem + " IS GONNA KILL U!");
-        return;
+        this.setState({
+          presentChemicals: this.state.presentChemicals.concat({
+            chemical: chem,
+            categorie: data[chem].categorie,
+            reference: data[chem].reference
+          })
+        });
       }
     });
   };
