@@ -3,20 +3,12 @@ import "bootstrap/dist/css/bootstrap.css";
 import styled, { css } from "styled-components";
 import { Button } from "react-bootstrap";
 import Warning from "../../icons/warning.png";
+import BlueWrapper from "./StyledComponents/BlueWrapper";
+import WrapperColumn from "./StyledComponents/WrapperColumn";
 
-const BlueWrapper = styled.div`height: 800px;`;
+const FailedText = styled.h4`textalign: center;`;
 
-const FailedText = styled.h4`text-align: center;`;
-
-const WrapperColumn = styled.div`
-  height: 550px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-around;
-`;
-
-class TestSucceeded extends Component {
+class TestFailed extends Component {
   displayChemicals = item => {
     return (
       <li>{`${item.chemical} is a ${item.categorie}. ${item.reference}`}</li>
@@ -45,4 +37,4 @@ class TestSucceeded extends Component {
   }
 }
 
-export default TestSucceeded;
+export default TestFailed;

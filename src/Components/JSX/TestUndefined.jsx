@@ -5,16 +5,8 @@ import styled from "styled-components";
 // import Undefined from "../../icons/";
 import { Button } from "react-bootstrap";
 import SadFace from "../../icons/sad.png";
-
-const BlueWrapper = styled.div`height: 800px;`;
-
-const WrapperColumn = styled.div`
-  height: 550px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-around;
-`;
+import BlueWrapper from "./StyledComponents/BlueWrapper";
+import WrapperColumn from "./StyledComponents/WrapperColumn";
 
 class TestUndefined extends Component {
   render() {

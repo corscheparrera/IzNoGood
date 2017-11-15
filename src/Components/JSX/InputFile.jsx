@@ -1,11 +1,13 @@
 import React, { Component } from "react";
 import "bootstrap/dist/css/bootstrap.css";
 import { Button, Row, Col, FormGroup, FormControl } from "react-bootstrap";
+import BlueWrapper from "./StyledComponents/BlueWrapper";
+import WrapperColumn from "./StyledComponents/WrapperColumn";
 
 class InputFile extends Component {
   render() {
     return (
-      <div style={{ height: "800px" }}>
+      <BlueWrapper>
         <Row>
           <Col sm={4} smOffset={4} className="text-center">
             <label className="fileUpload">
@@ -25,7 +27,7 @@ class InputFile extends Component {
             </label>
           </Col>
         </Row>
-      </div>
+      </BlueWrapper>
     );
   }
 }

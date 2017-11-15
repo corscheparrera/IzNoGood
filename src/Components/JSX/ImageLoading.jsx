@@ -2,17 +2,10 @@ import React, { Component } from "react";
 import "bootstrap/dist/css/bootstrap.css";
 import styled, { css } from "styled-components";
 import "../CSS/ImageLoading.css";
+import BlueWrapper from "./StyledComponents/BlueWrapper";
+import WrapperColumn from "./StyledComponents/WrapperColumn";
 
 // css declaration with styled component
-const BlueWrapper = styled.div`height: 800px;`;
-
-const WrapperColumn = styled.div`
-  height: 550px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-`;
 
 const Wrapper = styled.div`
   display: flex;
