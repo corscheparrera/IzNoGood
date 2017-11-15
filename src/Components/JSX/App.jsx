@@ -5,7 +5,6 @@ import "../CSS/App.css";
 import "bootstrap/dist/css/bootstrap.css";
 import { Grid } from "react-bootstrap";
 import InputFile from "./InputFile.jsx";
-import NavigationForTests from "./NavigationForTests";
 import ImageLoading from "./ImageLoading";
 import TestSucceeded from "./TestSucceeded";
 import TestFailed from "./TestFailed";
@@ -32,6 +31,7 @@ class App extends Component {
   handleInput = event => {
     const file = event.target.files[0];
     if (!file) return;
+    this.setState({ isLoading: true });
     storageRef
       .ref()
       .child(`${file.name}`)
@@ -42,7 +42,6 @@ class App extends Component {
           .child(`${file.name}`)
           .getDownloadURL()
           .then(url => this.setState({ uploadImageUrl: url }))
-          .then(() => this.setState({ isLoading: true }))
           .then(this.send2GoogleVision)
           .then(res => res.json())
           .then(data => {
@@ -136,7 +135,6 @@ class App extends Component {
     return (
       <BrowserRouter>
         <div>
-          <NavigationForTests />
           <Route
             exact
             path="/"
@@ -146,7 +144,9 @@ class App extends Component {
               } else if (this.state.undefinedView) {
                 return <TestUndefined reset={this.clearState} />;
               } else if (this.state.presentChemicals.length >= 1) {
-                return <TestFailed />;
+                return (
+                  <TestFailed presentChemicals={this.state.presentChemicals} />
+                );
               } else if (
                 this.state.uploadImageUrl &&
                 !this.state.presentChemicals.length
@@ -162,9 +162,7 @@ class App extends Component {
             }}
           />
 
-          <Route exact path="/TestSucceeded" component={TestSucceeded} />
-          <Route exact path="/TestFailed" component={TestFailed} />
-          <Route exact path="/TestUndefined" component={TestUndefined} />
+          {/* <Route exact path="/IngredientsProcess" component={} /> */}
         </div>
       </BrowserRouter>
     );

@@ -13,9 +13,6 @@ class TestUndefined extends Component {
           picture or visit our full list of ingredients to check them
         </h4>
         <button onClick={this.props.reset}>Reset</button>
-        {/* <LinkContainer to="/">
-          <NavItem eventKey={0}>InFile</NavItem>
-        </LinkContainer> */}
       </div>
     );
   }
