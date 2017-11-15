@@ -10,33 +10,27 @@ import ImageLoading from "./ImageLoading";
 import TestSucceeded from "./TestSucceeded";
 import TestFailed from "./TestFailed";
 import TestUndefined from "./TestUndefined";
+import fire from "./Firebase.jsx";
+import Barcode from "./Barcode.jsx";
 
-// Initialize Firebase
-var config = {
-  apiKey: "AIzaSyCI9p3KGB0UwBoqnYEZzm2tqSo3I12TfhA",
-  authDomain: "iznogood-185815.firebaseapp.com",
-  databaseURL: "https://iznogood-185815.firebaseio.com",
-  projectId: "iznogood-185815",
-  storageBucket: "iznogood-185815.appspot.com",
-  messagingSenderId: "510010763162"
-};
-
-firebase.initializeApp(config);
 const storageRef = firebase.storage();
+const db = fire.database();
 // const databaseRef = firebase.database();
 
 class App extends Component {
   constructor() {
     super();
     this.state = {
-      imagePreview:
-        "https://firebasestorage.googleapis.com/v0/b/iznogood-185815.appspot.com/o/IMG_5504%202.jpg?alt=media&token=554cc430-9b44-49c4-9512-535797197748"
+      isLoading: false,
+      ingredients: "",
+      uploadImageUrl: ""
     };
   }
 
-  uploadImage = event => {
+  handleInput = event => {
     const file = event.target.files[0];
-    return storageRef
+    if (!file) return;
+    storageRef
       .ref()
       .child(`${file.name}`)
       .put(file)
@@ -45,13 +39,29 @@ class App extends Component {
           .ref()
           .child(`${file.name}`)
           .getDownloadURL()
-          .then(url => this.updateState(url))
-          .then(() => this.send2GoogleVision())
+          .then(url => this.setState({ uploadImageUrl: url }))
+          .then(this.setState({ isLoading: true }))
+          .then(this.send2GoogleVision)
+          .then(this.setState({ isLoading: false }))
+          .then(res => res.json())
+          .then(data =>
+            this.storeGoogleVisionRes(
+              data.responses["0"].fullTextAnnotation.text.replace("\n", "")
+            )
+          )
+          .then(this.getChemicals)
+          .then(this.lookForRisk)
       );
   };
 
-  updateState = url => {
-    this.setState({ uploadImageUrl: url });
+  storeGoogleVisionRes = visionString => {
+    // Get a database reference
+    var ref = db.ref("userInputs");
+    ref
+      .set({
+        ingredients: visionString
+      })
+      .then(() => this.setState({ ingredients: visionString }));
   };
 
   send2GoogleVision = () => {
@@ -73,14 +83,25 @@ class App extends Component {
         }
       ]
     };
-    fetch(url, {
+    return fetch(url, {
       method: "POST",
       body: JSON.stringify(requestObj)
-    })
-      .then(res => res.json())
-      .then(res => {
-        console.log(res);
-      });
+    });
+  };
+
+  getChemicals = () => {
+    var chemicalsRef = db.ref("chemicals");
+    return chemicalsRef.once("value").then(x => x.val());
+  };
+  lookForRisk = data => {
+    var chemicals = Object.keys(data);
+
+    chemicals.map(chem => {
+      if (chem.includes(this.state.ingredients)) {
+        console.log("HEY DUDE, WATCH OUT, " + chem + " IS GONNA KILL U!");
+        return;
+      }
+    });
   };
 
   render() {
