@@ -42,7 +42,7 @@ class App extends Component {
           .child(`${file.name}`)
           .getDownloadURL()
           .then(url => this.setState({ uploadImageUrl: url }))
-          .then(this.setState({ isLoading: true }))
+          .then(() => this.setState({ isLoading: true }))
           .then(this.send2GoogleVision)
           .then(res => res.json())
           .then(data => {
@@ -59,6 +59,7 @@ class App extends Component {
           })
           .then(this.getChemicals)
           .then(this.lookForRisk)
+          .then(() => this.setState({ isLoading: false }))
       );
   };
 
@@ -118,6 +119,16 @@ class App extends Component {
     });
   };
 
+  clearState = () => {
+    this.setState({
+      isLoading: false,
+      ingredients: "",
+      uploadImageUrl: "",
+      presentChemicals: [],
+      undefinedView: false
+    });
+  };
+
   render() {
     return (
       <BrowserRouter>
@@ -126,21 +137,31 @@ class App extends Component {
           <Route
             exact
             path="/"
-            render={() => (
-              <Grid>
-                <InputFile updateUploadImage={this.handleInput} />
-              </Grid>
-            )}
+            render={() => {
+              if (this.state.isLoading) {
+                return <ImageLoading url={this.state.uploadImageUrl} />;
+              } else if (this.state.undefinedView) {
+                return <TestUndefined reset={this.clearState} />;
+              } else if (this.state.presentChemicals.length >= 1) {
+                return <TestFailed />;
+              } else if (
+                this.state.uploadImageUrl &&
+                !this.state.presentChemicals.length
+              ) {
+                return <TestSucceeded />;
+              } else {
+                return (
+                  <Grid>
+                    <InputFile updateUploadImage={this.handleInput} />
+                  </Grid>
+                );
+              }
+            }}
           />
-          <Route
-            exact
-            path="/ImageLoading"
-            render={() => <ImageLoading url={this.state.uploadImageUrl} />}
-          />
+
           <Route exact path="/TestSucceeded" component={TestSucceeded} />
           <Route exact path="/TestFailed" component={TestFailed} />
           <Route exact path="/TestUndefined" component={TestUndefined} />
-          {this.state.isLoading}? <ImageLoading /> : null;
         </div>
       </BrowserRouter>
     );
