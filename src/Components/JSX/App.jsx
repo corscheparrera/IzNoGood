@@ -23,7 +23,10 @@ class App extends Component {
     this.state = {
       isLoading: false,
       ingredients: "",
-      uploadImageUrl: ""
+      uploadImageUrl: "",
+      warningView: false,
+      succeedView: false,
+      undefinedView: false
     };
   }
 
@@ -42,7 +45,6 @@ class App extends Component {
           .then(url => this.setState({ uploadImageUrl: url }))
           .then(this.setState({ isLoading: true }))
           .then(this.send2GoogleVision)
-          .then(this.setState({ isLoading: false }))
           .then(res => res.json())
           .then(data =>
             this.storeGoogleVisionRes(
@@ -51,6 +53,7 @@ class App extends Component {
           )
           .then(this.getChemicals)
           .then(this.lookForRisk)
+          .then(this.setState({ isLoading: false }))
       );
   };
 
