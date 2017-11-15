@@ -53,7 +53,6 @@ class App extends Component {
           )
           .then(this.getChemicals)
           .then(this.lookForRisk)
-          .then(this.setState({ isLoading: false }))
       );
   };
 
@@ -117,7 +116,7 @@ class App extends Component {
             path="/"
             render={() => (
               <Grid>
-                <InputFile updateUploadImage={this.uploadImage} />
+                <InputFile updateUploadImage={this.handleInput} />
               </Grid>
             )}
           />
@@ -129,7 +128,9 @@ class App extends Component {
           <Route exact path="/TestSucceeded" component={TestSucceeded} />
           <Route exact path="/TestFailed" component={TestFailed} />
           <Route exact path="/TestUndefined" component={TestUndefined} />
-          {this.state.isLoading}? <ImageLoading /> : null;
+          {this.state.isLoading ? (
+            <ImageLoading url={this.state.uploadImageUrl} />
+          ) : null}
         </div>
       </BrowserRouter>
     );
