@@ -123,7 +123,6 @@ class App extends Component {
       <BrowserRouter>
         <div>
           <NavigationForTests />
-
           <Route
             exact
             path="/"
@@ -133,7 +132,6 @@ class App extends Component {
               </Grid>
             )}
           />
-
           <Route
             exact
             path="/ImageLoading"
@@ -142,6 +140,7 @@ class App extends Component {
           <Route exact path="/TestSucceeded" component={TestSucceeded} />
           <Route exact path="/TestFailed" component={TestFailed} />
           <Route exact path="/TestUndefined" component={TestUndefined} />
+          {this.state.isLoading}? <ImageLoading /> : null;
         </div>
       </BrowserRouter>
     );
