@@ -4,11 +4,7 @@ import styled, { css } from "styled-components";
 import "../CSS/ImageLoading.css";
 
 // css declaration with styled component
-const Wrapper = styled.div`
-  display: flex;
-  justify-content: center;
-  align-content: center;
-`;
+const BlueWrapper = styled.div`height: 800px;`;
 
 const WrapperColumn = styled.div`
   height: 550px;
@@ -16,6 +12,12 @@ const WrapperColumn = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
+`;
+
+const Wrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  align-content: center;
 `;
 
 const ImagePreview = styled.div`
@@ -48,14 +50,16 @@ const ImagePreview = styled.div`
 class ImageLoading extends Component {
   render() {
     return (
-      <WrapperColumn>
-        <h2>image preview</h2>
-        <ImagePreview style={{ backgroundImage: `url(${this.props.url})` }} />
-        <h4>Image being processed</h4>
-        <Wrapper>
-          <div className="loader" />
-        </Wrapper>
-      </WrapperColumn>
+      <BlueWrapper>
+        <WrapperColumn>
+          <h2>image preview</h2>
+          <ImagePreview style={{ backgroundImage: `url(${this.props.url})` }} />
+          <h4>Image being processed</h4>
+          <Wrapper>
+            <div className="loader" />
+          </Wrapper>
+        </WrapperColumn>
+      </BlueWrapper>
     );
   }
 }

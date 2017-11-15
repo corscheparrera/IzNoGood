@@ -119,6 +119,7 @@ class App extends Component {
   };
 
   clearState = () => {
+    console.log("clearstate");
     this.setState({
       isLoading: false,
       ingredients: "",
@@ -142,13 +143,16 @@ class App extends Component {
                 return <TestUndefined reset={this.clearState} />;
               } else if (this.state.presentChemicals.length >= 1) {
                 return (
-                  <TestFailed presentChemicals={this.state.presentChemicals} />
+                  <TestFailed
+                    presentChemicals={this.state.presentChemicals}
+                    reset={this.clearState}
+                  />
                 );
               } else if (
                 this.state.uploadImageUrl &&
                 !this.state.presentChemicals.length
               ) {
-                return <TestSucceeded />;
+                return <TestSucceeded reset={this.clearState} />;
               } else {
                 return (
                   <Grid>

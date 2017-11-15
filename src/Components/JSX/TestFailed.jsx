@@ -4,6 +4,8 @@ import styled, { css } from "styled-components";
 import { Button } from "react-bootstrap";
 import Warning from "../../icons/warning.png";
 
+const BlueWrapper = styled.div`height: 800px;`;
+
 const FailedText = styled.h4`text-align: center;`;
 
 const WrapperColumn = styled.div`
@@ -23,17 +25,22 @@ class TestSucceeded extends Component {
 
   render() {
     return (
-      <WrapperColumn>
-        <FailedText>
-          Your product contains some ingredients that didn't pass the test.
-        </FailedText>
-        <img src={Warning} height="150px" alt="" />
-        <div>
-          <ul>{this.props.presentChemicals.map(this.displayChemicals)}</ul>
-        </div>
-        <Button> Want to save this product to remember ? </Button>
-        <a href="">If you want to know more on the ingredients we check</a>
-      </WrapperColumn>
+      <BlueWrapper>
+        <WrapperColumn>
+          <FailedText>
+            Your product contains some ingredients that didn't pass the test.
+          </FailedText>
+          <img src={Warning} height="150px" alt="" />
+          <div>
+            <ul>{this.props.presentChemicals.map(this.displayChemicals)}</ul>
+          </div>
+          <Button> Want to save this product to remember ? </Button>
+          <Button onClick={this.props.reset}>
+            Take a picture of a new product
+          </Button>
+          <a href="">If you want to know more on the ingredients we check</a>
+        </WrapperColumn>
+      </BlueWrapper>
     );
   }
 }
