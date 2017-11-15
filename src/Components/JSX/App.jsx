@@ -110,7 +110,8 @@ class App extends Component {
         this.setState({
           presentChemicals: this.state.presentChemicals.concat({
             chemical: chem,
-            categorie: data[chem].categorie
+            categorie: data[chem].categorie,
+            reference: data[chem].reference
           })
         });
       }
