@@ -1,17 +1,26 @@
 var Quagga = require("quagga").default;
-Quagga.decodeSingle(
-  {
-    src: "./code.png",
-    numOfWorkers: 0, // Needs to be 0 when used within node
-    decoder: {
-      readers: ["upc_reader"] // List of active readers
-    }
-  },
-  function(result) {
-    if (result.codeResult) {
+
+var buffer = require("fs").readFileSync("./code.png");
+
+decode(buffer);
+function decode(buff) {
+  Quagga.decodeSingle(
+    {
+      src: buff,
+      numOfWorkers: 0,
+      inputStream: {
+        mime: "image/png",
+        size: 800,
+        area: {
+          top: "10%",
+          right: "5%",
+          left: "5%",
+          bottom: "10%"
+        }
+      }
+    },
+    function(result) {
       console.log("result", result.codeResult.code);
-    } else {
-      console.log("not detected");
     }
-  }
-);
+  );
+}

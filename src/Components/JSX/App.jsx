@@ -138,7 +138,7 @@ class App extends Component {
   render() {
     return (
       <div>
-        <Barcode imageUrl={this.state.uploadImageUrl} />
+        <Barcode />
       </div>
     );
   }
