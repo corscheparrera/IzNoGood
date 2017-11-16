@@ -13,7 +13,6 @@ import TestFailed from "./TestFailed";
 import TestUndefined from "./TestUndefined";
 import fire from "./Firebase.jsx";
 import Barcode from "./Barcode.jsx";
-import { BlueWrapper } from "./StyledComponents/BlueWrapper";
 
 const storageRef = firebase.storage();
 const db = fire.database();
@@ -181,7 +180,12 @@ class App extends Component {
           <Route
             exact
             path="/Account"
-            render={() => <Account logUser={this.logUser} />}
+            render={() => (
+              <Account
+                userLogged={this.state.user}
+                updateLoginState={this.logUser}
+              />
+            )}
           />
         </div>
       </BrowserRouter>
