@@ -22,3 +22,27 @@ canvas.drawingBuffer {
   left: 0;
   top: 0;
 }
+#barcodevideo,
+#barcodecanvas,
+#barcodecanvasg {
+  height: 400px;
+}
+
+#barcodecanvasg {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+}
+
+#result {
+  font-family: verdana;
+  font-size: 1.5em;
+}
+
+#barcode {
+  position: relative;
+}
+
+#barcodecanvas {
+  display: none;
+}

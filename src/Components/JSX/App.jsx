@@ -137,38 +137,9 @@ class App extends Component {
 
   render() {
     return (
-      <BrowserRouter>
-        <div>
-          <Route
-            exact
-            path="/"
-            render={() => {
-              if (this.state.isLoading) {
-                return <ImageLoading url={this.state.uploadImageUrl} />;
-              } else if (this.state.undefinedView) {
-                return <TestUndefined reset={this.clearState} />;
-              } else if (this.state.presentChemicals.length >= 1) {
-                return (
-                  <TestFailed presentChemicals={this.state.presentChemicals} />
-                );
-              } else if (
-                this.state.uploadImageUrl &&
-                !this.state.presentChemicals.length
-              ) {
-                return <TestSucceeded />;
-              } else {
-                return (
-                  <Grid>
-                    <InputFile updateUploadImage={this.handleInput} />
-                  </Grid>
-                );
-              }
-            }}
-          />
-
-          {/* <Route exact path="/IngredientsProcess" component={} /> */}
-        </div>
-      </BrowserRouter>
+      <div>
+        <Barcode imageUrl={this.state.uploadImageUrl} />
+      </div>
     );
   }
 }
