@@ -18,7 +18,7 @@ class TestFailed extends Component {
   render() {
     return (
       <BlueWrapper>
-        <WrapperColumn>
+        <WrapperColumn style={{ height: "800px" }}>
           <FailedText>
             Your product contains some ingredients that didn't pass the test.
           </FailedText>
@@ -30,7 +30,9 @@ class TestFailed extends Component {
           <Button onClick={this.props.reset}>
             Take a picture of a new product
           </Button>
-          <a href="">If you want to know more on the ingredients we check</a>
+          <a href="/IngredientList">
+            If you want to know more on the ingredients we check
+          </a>
         </WrapperColumn>
       </BlueWrapper>
     );

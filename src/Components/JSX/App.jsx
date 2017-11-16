@@ -4,6 +4,8 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 import "../CSS/App.css";
 import "bootstrap/dist/css/bootstrap.css";
 import { Grid } from "react-bootstrap";
+import Account from "./Account";
+import IngredientList from "./IngredientList";
 import InputFile from "./InputFile.jsx";
 import ImageLoading from "./ImageLoading";
 import TestSucceeded from "./TestSucceeded";
@@ -11,6 +13,7 @@ import TestFailed from "./TestFailed";
 import TestUndefined from "./TestUndefined";
 import fire from "./Firebase.jsx";
 import Barcode from "./Barcode.jsx";
+import { BlueWrapper } from "./StyledComponents/BlueWrapper";
 
 const storageRef = firebase.storage();
 const db = fire.database();
@@ -24,9 +27,14 @@ class App extends Component {
       ingredients: [],
       uploadImageUrl: "",
       presentChemicals: [],
-      undefinedView: false
+      undefinedView: false,
+      user: ""
     };
   }
+
+  logUser = userid => {
+    this.setState({ user: userid.displayName });
+  };
 
   handleInput = event => {
     const file = event.target.files[0];
@@ -169,8 +177,12 @@ class App extends Component {
               }
             }}
           />
-
-          {/* <Route exact path="/IngredientsProcess" component={} /> */}
+          <Route exact path="/IngredientList" component={IngredientList} />
+          <Route
+            exact
+            path="/Account"
+            render={() => <Account logUser={this.logUser} />}
+          />
         </div>
       </BrowserRouter>
     );
