@@ -7,11 +7,9 @@ class NavigationForTests extends Component {
   render() {
     return (
       <header>
-        <Nav bsStyle="pills">
-          <LinkContainer to="/Account">
-            <NavItem eventKey={1}>Load</NavItem>
-          </LinkContainer>
-        </Nav>
+        <Link style={{ marginRight: "5px" }} to="/Account">
+          Account
+        </Link>
       </header>
     );
   }

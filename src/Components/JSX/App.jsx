@@ -4,6 +4,9 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 import "../CSS/App.css";
 import "bootstrap/dist/css/bootstrap.css";
 import { Grid } from "react-bootstrap";
+import NavigationForTests from "./NavigationForTests";
+import SaveMyCleanProduct from "./SaveMyCleanProduct";
+import SaveMyDirtyProduct from "./SaveMyDirtyProduct";
 import Account from "./Account";
 import IngredientList from "./IngredientList";
 import InputFile from "./InputFile.jsx";
@@ -27,12 +30,13 @@ class App extends Component {
       uploadImageUrl: "",
       presentChemicals: [],
       undefinedView: false,
-      user: ""
+      user: "",
+      uid: ""
     };
   }
 
-  logUser = userid => {
-    this.setState({ user: userid.displayName });
+  logUser = user => {
+    this.setState({ user: user.displayName, uid: user.uid });
   };
 
   handleInput = event => {
@@ -147,6 +151,7 @@ class App extends Component {
     return (
       <BrowserRouter>
         <div>
+          <NavigationForTests />
           <Route
             exact
             path="/"
@@ -183,6 +188,29 @@ class App extends Component {
             render={() => (
               <Account
                 userLogged={this.state.user}
+                updateLoginState={this.logUser}
+                uidLogged={this.state.uid}
+              />
+            )}
+          />
+          <Route
+            exact
+            path="/SaveMyCleanProduct"
+            render={() => (
+              <SaveMyCleanProduct
+                userLogged={this.state.user}
+                uidLogged={this.state.uid}
+                updateLoginState={this.logUser}
+              />
+            )}
+          />
+          <Route
+            exact
+            path="/SaveMyDirtyProduct"
+            render={() => (
+              <SaveMyDirtyProduct
+                userLogged={this.state.user}
+                uidLogged={this.state.uid}
                 updateLoginState={this.logUser}
               />
             )}

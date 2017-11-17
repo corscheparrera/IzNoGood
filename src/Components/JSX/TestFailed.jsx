@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import "bootstrap/dist/css/bootstrap.css";
 import styled, { css } from "styled-components";
 import { Button } from "react-bootstrap";
+import { Link } from "react-router-dom";
+
 import Warning from "../../icons/warning.png";
 import BlueWrapper from "./StyledComponents/BlueWrapper";
 import WrapperColumn from "./StyledComponents/WrapperColumn";
@@ -26,7 +28,9 @@ class TestFailed extends Component {
           <div>
             <ul>{this.props.presentChemicals.map(this.displayChemicals)}</ul>
           </div>
-          <Button> Want to save this product to remember ? </Button>
+          <Link to="/SaveMyDirtyProduct">
+            <Button> Want to save this product to remember ? </Button>
+          </Link>
           <Button onClick={this.props.reset}>
             Take a picture of a new product
           </Button>

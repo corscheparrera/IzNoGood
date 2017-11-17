@@ -7,6 +7,7 @@ import BlueWrapper from "./StyledComponents/BlueWrapper";
 import WrapperColumn from "./StyledComponents/WrapperColumn";
 
 const providerGoogle = new firebase.auth.GoogleAuthProvider();
+const database = firebase.database();
 
 class Login extends Component {
   logIn = provider => {
@@ -18,8 +19,6 @@ class Login extends Component {
       .auth()
       .getRedirectResult()
       .then(function(result) {
-        console.log("hey");
-        window.g = result;
         if (!result) return;
         // The signed-in user info.
         const user = result.user;
@@ -27,6 +26,7 @@ class Login extends Component {
         return user;
       })
       .then(user => {
+        console.log("user is", user);
         this.props.updateLoginState(user);
       })
       .catch(function(error) {
@@ -38,9 +38,9 @@ class Login extends Component {
         // The firebase.auth.AuthCredential type that was used.
         var credential = error.credential;
         console.log(error);
-        // ...
       });
   }
+
   render() {
     return (
       <BlueWrapper>

@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import "bootstrap/dist/css/bootstrap.css";
 import styled, { css } from "styled-components";
 import { Button } from "react-bootstrap";
+import { Link } from "react-router-dom";
 import GreenFlag from "../../icons/flag.png";
 import BlueWrapper from "./StyledComponents/BlueWrapper";
 import WrapperColumn from "./StyledComponents/WrapperColumn";
@@ -18,7 +19,9 @@ class TestSucceeded extends Component {
             passed our tests !
           </PassedText>
           <img src={GreenFlag} height="150px" alt="" />
-          <Button> Want to save your product ? </Button>
+          <Link to="/SaveMyCleanProduct">
+            <Button> Want to save your product ? </Button>
+          </Link>
           <Button onClick={this.props.reset}>
             Take a new picture of my product
           </Button>
