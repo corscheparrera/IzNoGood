@@ -19,7 +19,7 @@ class TestSucceeded extends Component {
             passed our tests !
           </PassedText>
           <img src={GreenFlag} height="150px" alt="" />
-          <Link to="/SaveMyCleanProduct">
+          <Link to="/save/CleanProducts">
             <Button> Want to save your product ? </Button>
           </Link>
           <Button onClick={this.props.reset}>

@@ -5,8 +5,7 @@ import "../CSS/App.css";
 import "bootstrap/dist/css/bootstrap.css";
 import { Grid } from "react-bootstrap";
 import NavigationForTests from "./NavigationForTests";
-import SaveMyCleanProduct from "./SaveMyCleanProduct";
-import SaveMyDirtyProduct from "./SaveMyDirtyProduct";
+import SaveMyProduct from "./SaveMyProduct";
 import Account from "./Account";
 import IngredientList from "./IngredientList";
 import InputFile from "./InputFile.jsx";
@@ -210,23 +209,13 @@ class App extends Component {
           />
           <Route
             exact
-            path="/SaveMyCleanProduct"
-            render={() => (
-              <SaveMyCleanProduct
+            path="/save/:status"
+            render={routeProps => (
+              <SaveMyProduct
                 userLogged={this.state.user}
                 uidLogged={this.state.uid}
                 updateLoginState={this.logUser}
-              />
-            )}
-          />
-          <Route
-            exact
-            path="/SaveMyDirtyProduct"
-            render={() => (
-              <SaveMyDirtyProduct
-                userLogged={this.state.user}
-                uidLogged={this.state.uid}
-                updateLoginState={this.logUser}
+                status={routeProps.match.params.status}
               />
             )}
           />

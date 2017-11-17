@@ -15,18 +15,16 @@ import WrapperColumn from "./StyledComponents/WrapperColumn";
 
 const database = firebase.database();
 
-class SaveMyCleanProduct extends Component {
-  constructor() {
-    super();
-    console.log("Hey2");
-  }
+class SaveMyProduct extends Component {
   componentDidMount() {
+    // check if user has already signed in, if yes skip the login and changed the state accordingly
     firebase.auth().onAuthStateChanged(user => {
       if (user) {
         this.props.updateLoginState(user);
       }
     });
   }
+
   clickAddProduct = () => {
     // const userId = this.props.currentUserId;
     const productDescription = this.inputProductDescription.value;
@@ -38,13 +36,14 @@ class SaveMyCleanProduct extends Component {
     };
     // database
     //   .ref(`userProducts/${this.props.uidLogged}/CleanProduct`)
-    //   .once("value", result => {}
+    //   .once("value", result => {
     //     console.log("result from useRProduct", result.val());
     //     console.log("uid", this.props.uidLogged);
     database
-      .ref(`userProducts/${this.props.uidLogged}/CleanProduct`)
+      .ref(`userProducts/${this.props.uidLogged}/${this.props.status}`)
       .push(productToUpload);
   };
+
   render() {
     if (!this.props.userLogged) {
       return (
@@ -81,7 +80,7 @@ class SaveMyCleanProduct extends Component {
             </Form>
 
             <Button onClick={this.clickAddProduct} bsStyle="primary">
-              Save my product
+              Save this product
             </Button>
           </WrapperColumn>
         </BlueWrapper>
@@ -89,5 +88,4 @@ class SaveMyCleanProduct extends Component {
     }
   }
 }
-
-export default SaveMyCleanProduct;
+export default SaveMyProduct;
