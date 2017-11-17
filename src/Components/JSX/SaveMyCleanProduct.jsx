@@ -27,7 +27,7 @@ class SaveMyProduct extends Component {
     };
     // database
     //   .ref(`userProducts/${this.props.uidLogged}/CleanProduct`)
-    //   .once("value", result => {
+    //   .once("value", result => {}
     //     console.log("result from useRProduct", result.val());
     //     console.log("uid", this.props.uidLogged);
     database
