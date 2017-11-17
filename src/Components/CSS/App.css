@@ -1,0 +1,24 @@
+.fileUpload {
+  margin-top: 30vh;
+  padding-top: 20px;
+  border: 2px dashed rgba(177, 13, 201, 1) !important;
+  color: #b10dc9 !important;
+  width: 230px;
+  height: 150px;
+}
+
+.fileUpload:focus {
+  outline: none !important;
+}
+
+.displayNone {
+  display: none;
+}
+/* In order to place the tracking correctly */
+
+canvas.drawing,
+canvas.drawingBuffer {
+  position: absolute;
+  left: 0;
+  top: 0;
+}
