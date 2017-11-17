@@ -15,7 +15,18 @@ import WrapperColumn from "./StyledComponents/WrapperColumn";
 
 const database = firebase.database();
 
-class SaveMyProduct extends Component {
+class SaveMyCleanProduct extends Component {
+  constructor() {
+    super();
+    console.log("Hey2");
+  }
+  componentDidMount() {
+    firebase.auth().onAuthStateChanged(user => {
+      if (user) {
+        this.props.updateLoginState(user);
+      }
+    });
+  }
   clickAddProduct = () => {
     // const userId = this.props.currentUserId;
     const productDescription = this.inputProductDescription.value;
@@ -79,4 +90,4 @@ class SaveMyProduct extends Component {
   }
 }
 
-export default SaveMyProduct;
+export default SaveMyCleanProduct;

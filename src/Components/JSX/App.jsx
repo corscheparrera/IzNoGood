@@ -31,12 +31,26 @@ class App extends Component {
       presentChemicals: [],
       undefinedView: false,
       user: "",
-      uid: ""
+      uid: "",
+      photoUrl: ""
     };
   }
 
+  componentDidMount() {
+    firebase.auth().onAuthStateChanged(user => {
+      if (user) {
+        this.logUser(user);
+      }
+    });
+  }
+
   logUser = user => {
-    this.setState({ user: user.displayName, uid: user.uid });
+    console.log("log User updated");
+    this.setState({
+      user: user.displayName,
+      uid: user.uid,
+      photoUrl: user.photoURL
+    });
   };
 
   handleInput = event => {
@@ -151,7 +165,8 @@ class App extends Component {
     return (
       <BrowserRouter>
         <div>
-          <NavigationForTests />
+          <NavigationForTests photoUrl={this.state.photoUrl} />
+
           <Route
             exact
             path="/"

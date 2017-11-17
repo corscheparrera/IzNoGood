@@ -18,6 +18,14 @@ class componentName extends Component {
       dirtyProducts: []
     };
   }
+  componentDidMount() {
+    // check if user has already signed in, if yes skip the login and changed the state accordingly
+    firebase.auth().onAuthStateChanged(user => {
+      if (user) {
+        this.props.updateLoginState(user);
+      }
+    });
+  }
 
   componentDidUpdate(prevProps, prevState) {
     if (this.props.userLogged !== prevProps.userLogged) {
@@ -56,8 +64,7 @@ class componentName extends Component {
       return (
         <BlueWrapper>
           <WrapperColumn>
-            <h1>My App</h1>
-            <p>Welcome! You are now signed-in!{this.props.userLogged}</p>
+            <h3>Welcome {this.props.userLogged}!</h3>
             <h3>Your clean product list</h3>
             {/* <ul>{this.state.cleanProducts.map(this.displayProducts)}</ul> */}
             <h3>Your dirty product list</h3>
