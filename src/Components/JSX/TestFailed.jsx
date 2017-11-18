@@ -28,15 +28,15 @@ class TestFailed extends Component {
           <div>
             <ul>{this.props.presentChemicals.map(this.displayChemicals)}</ul>
           </div>
-          <Link to="/SaveMyDirtyProduct">
+          <Link to="/save/DirtyProducts">
             <Button> Want to save this product to remember ? </Button>
           </Link>
           <Button onClick={this.props.reset}>
             Take a picture of a new product
           </Button>
-          <a href="/IngredientList">
+          <Link to="/IngredientList">
             If you want to know more on the ingredients we check
-          </a>
+          </Link>
         </WrapperColumn>
       </BlueWrapper>
     );

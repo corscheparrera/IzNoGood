@@ -16,6 +16,15 @@ import WrapperColumn from "./StyledComponents/WrapperColumn";
 const database = firebase.database();
 
 class SaveMyProduct extends Component {
+  componentDidMount() {
+    // check if user has already signed in, if yes skip the login and changed the state accordingly
+    firebase.auth().onAuthStateChanged(user => {
+      if (user) {
+        this.props.updateLoginState(user);
+      }
+    });
+  }
+
   clickAddProduct = () => {
     // const userId = this.props.currentUserId;
     const productDescription = this.inputProductDescription.value;
@@ -31,7 +40,7 @@ class SaveMyProduct extends Component {
     //     console.log("result from useRProduct", result.val());
     //     console.log("uid", this.props.uidLogged);
     database
-      .ref(`userProducts/${this.props.uidLogged}/DirtyProducts`)
+      .ref(`userProducts/${this.props.uidLogged}/${this.props.status}`)
       .push(productToUpload);
   };
 
