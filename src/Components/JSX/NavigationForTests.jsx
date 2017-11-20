@@ -2,6 +2,9 @@ import React, { Component } from "react";
 import { Nav, Navbar, NavItem } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
 import { Link } from "react-router-dom";
+
+// CSS not in styled components but in vaigation - for comparing purpose
+
 import "../CSS/Navigation.css";
 
 class Navigation extends Component {

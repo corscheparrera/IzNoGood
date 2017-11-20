@@ -22,12 +22,13 @@
   width: auto;
 }
 
-.navbar-collapse.collapse > ul > div > img {
+#navbar > div > div.navbar-collapse.collapse > ul > img {
   border-radius: 50%;
+  margin-right: -10px;
 }
 
 #navbar .nav > li > a {
-  margin: 15px 10px;
+  margin: 5px 5px;
   padding: 0;
 }
 
