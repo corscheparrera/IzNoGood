@@ -19,12 +19,11 @@
 .navbar-header > a > img {
   margin: 15px 0;
   height: 55px;
+  width: auto;
 }
 
 .navbar-collapse.collapse > ul > div > img {
-  margin: 15px 0;
-  height: 55px;
-  width: auto;
+  border-radius: 50%;
 }
 
 #navbar .nav > li > a {
