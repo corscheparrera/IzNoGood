@@ -164,7 +164,10 @@ class App extends Component {
     return (
       <BrowserRouter>
         <div>
-          <NavigationForTests photoUrl={this.state.photoUrl} />
+          <NavigationForTests
+            userName={this.state.user}
+            photoUrl={this.state.photoUrl}
+          />
 
           <Route
             exact

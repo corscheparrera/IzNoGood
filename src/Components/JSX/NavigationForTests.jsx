@@ -1,53 +1,65 @@
 import React, { Component } from "react";
-import { Link, Route } from "react-router-dom";
-import styled from "styled-components";
 import { Nav, Navbar, NavItem } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
-import Account from "../../icons/account.svg";
+import { Link } from "react-router-dom";
+import "../CSS/Navigation.css";
 
-const IconAccount = styled.img`
-  width: 40px;
-  border-radius: 50%;
-`;
-
-const NavBar = styled.div`
-  display: flex;
-  justify-content: space-between;
-  padding: 10px;
-`;
-
-class NavigationForTests extends Component {
+class Navigation extends Component {
   componentDidUpdate(prevProps, prevState) {
     if (this.props.photoUrl !== prevProps.photoUrl) {
     }
   }
-
   render() {
     if (!this.props.photoUrl) {
       return (
-        <NavBar>
-          <Link to="/">
-            <IconAccount src={Account} alt="" />
-          </Link>
-          <Link to="/Account">
-            <IconAccount src={Account} alt="" />
-          </Link>
-        </NavBar>
+        <Navbar id="navbar" fluid fixedTop>
+          <Navbar.Header>
+            <Link to="/">
+              <img
+                alt=""
+                className="logo"
+                src={require("../../icons/dna.svg")}
+              />
+            </Link>
+          </Navbar.Header>
+          <Navbar.Collapse>
+            <Nav pullRight>
+              <LinkContainer to="/Account">
+                <img
+                  alt=""
+                  className="logo"
+                  src={require("../../icons/account.svg")}
+                />
+              </LinkContainer>
+            </Nav>
+          </Navbar.Collapse>
+        </Navbar>
       );
     } else {
       return (
-        <NavBar>
-          <Link to="/">
-            <IconAccount src={Account} alt="" />
-          </Link>
-
-          <Link to="/Account">
-            <IconAccount src={this.props.photoUrl} alt="" />
-          </Link>
-        </NavBar>
+        <Navbar id="navbar" collapseOnSelect fluid fixedTop>
+          <Navbar.Header>
+            <Link to="/">
+              <img
+                alt=""
+                className="logo"
+                src={require("../../icons/dna.svg")}
+              />
+            </Link>
+          </Navbar.Header>
+          <Navbar.Collapse>
+            <Nav pullRight>
+              <LinkContainer to="/Account">
+                <img alt="" className="logo" src={this.props.photoUrl} />
+              </LinkContainer>
+              <LinkContainer to="/Account">
+                <NavItem eventKey={1}>{this.props.userName}</NavItem>
+              </LinkContainer>
+            </Nav>
+          </Navbar.Collapse>
+        </Navbar>
       );
     }
   }
 }
-
-export default NavigationForTests;
+export default Navigation;
