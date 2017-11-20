@@ -4,6 +4,8 @@ import fire from "./Firebase.jsx";
 import Login from "./Login";
 import { Button } from "react-bootstrap";
 import styled from "styled-components";
+import GreenFlag from "../../icons/flag.png";
+import Warning from "../../icons/warning.png";
 import BlueWrapper from "./StyledComponents/BlueWrapper";
 import WrapperColumn from "./StyledComponents/WrapperColumn";
 
@@ -11,7 +13,41 @@ const database = firebase.database();
 const providerGoogle = new firebase.auth.GoogleAuthProvider();
 // const providerFacebook = new firebase.auth.FacebookAuthProvider();
 
-// const productSavedWrapper = styled.styled`text-align: left;`;
+const ProductImage = styled.img`
+  text-align: left;
+  border-radius: 50%;
+  height: 45px;
+  width: 45px;
+`;
+const WrapperSingleProduct = styled.div`
+  margin-left: 15px;
+  margin-bottom: 15px;
+  display: flex;
+  justify-content: flex-start;
+  padding: 8px;
+  border-width: thin;
+  border-bottom: 1px solid lightgrey;
+`;
+const WrapperSingleProductText = styled.div`
+  display: flex;
+  margin-left: 5px;
+  flex-direction: column;
+  font-size: 12px;
+`;
+
+const SectionProducts = styled.h4`
+  padding: 10px 0px;
+  margin-top: 40px;
+  text-align: center;
+  font-size: 15px;
+  background-color: #edeeef;
+`;
+
+const ProductTitle = styled.span`
+font-weight: bold;
+text-transform: uppercase;
+font-syze:12px;
+}`;
 
 class componentName extends Component {
   constructor() {
@@ -61,16 +97,16 @@ class componentName extends Component {
   displayProducts = state => {
     if (!state) return;
     const cleanProductsScanned = Object.keys(state);
-    console.log("arraykeys", cleanProductsScanned);
-    console.log("state", state);
 
     let htmlProduct = cleanProductsScanned.map(item => {
-      console.log("productname", state[item].ProductName);
       return (
-        <p>
-          <strong> {state[item].ProductName} </strong>:
-          {state[item].ProductDescription}
-        </p>
+        <WrapperSingleProduct>
+          <ProductImage src={state[item].ImageUrl} alt="" />
+          <WrapperSingleProductText>
+            <ProductTitle> {state[item].ProductName} </ProductTitle>
+            {state[item].ProductDescription}
+          </WrapperSingleProductText>
+        </WrapperSingleProduct>
       );
     });
     console.log("htmlProduct", htmlProduct);
@@ -89,13 +125,12 @@ class componentName extends Component {
     } else {
       return (
         <BlueWrapper>
-          <WrapperColumn>
-            <h3>Welcome {this.props.userLogged}!</h3>
-            <h3>Your clean product list</h3>
+          <div>
+            <SectionProducts>Your clean product list </SectionProducts>
             <div>{this.displayProducts(this.state.cleanProducts)}</div>
-            <h3>Your dirty product list</h3>
+            <SectionProducts>Your dirty product list </SectionProducts>
             <div>{this.displayProducts(this.state.dirtyProducts)}</div>
-          </WrapperColumn>
+          </div>
         </BlueWrapper>
       );
     }

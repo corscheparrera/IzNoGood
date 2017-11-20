@@ -5,11 +5,15 @@ import { Nav, Navbar, NavItem } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
 import Account from "../../icons/account.svg";
 
-const IconAccount = styled.img`width: 40px;`;
+const IconAccount = styled.img`
+  width: 40px;
+  border-radius: 50%;
+`;
 
-const LeftCorner = styled.div`
-  margin-top: 10px;
-  margin-left: 10px;
+const NavBar = styled.div`
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
 `;
 
 class NavigationForTests extends Component {
@@ -21,21 +25,26 @@ class NavigationForTests extends Component {
   render() {
     if (!this.props.photoUrl) {
       return (
-        <header>
-          <LeftCorner>
-            <Link to="/Account">
-              <IconAccount src={Account} alt="" />
-            </Link>
-          </LeftCorner>
-        </header>
+        <NavBar>
+          <Link to="/">
+            <IconAccount src={Account} alt="" />
+          </Link>
+          <Link to="/Account">
+            <IconAccount src={Account} alt="" />
+          </Link>
+        </NavBar>
       );
     } else {
       return (
-        <LeftCorner>
+        <NavBar>
+          <Link to="/">
+            <IconAccount src={Account} alt="" />
+          </Link>
+
           <Link to="/Account">
             <IconAccount src={this.props.photoUrl} alt="" />
           </Link>
-        </LeftCorner>
+        </NavBar>
       );
     }
   }

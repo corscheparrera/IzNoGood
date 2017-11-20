@@ -9,6 +9,7 @@ import {
   ControlLabel,
   Button
 } from "react-bootstrap";
+import { LinkContainer } from "react-router-bootstrap";
 
 import BlueWrapper from "./StyledComponents/BlueWrapper";
 import WrapperColumn from "./StyledComponents/WrapperColumn";
@@ -32,16 +33,15 @@ class SaveMyProduct extends Component {
 
     const productToUpload = {
       ProductDescription: productDescription,
-      ProductName: ProductName
+      ProductName: ProductName,
+      ImageUrl:
+        "https://images-na.ssl-images-amazon.com/images/I/41c-e971xoL._SY355_.jpg"
     };
-    // database
-    //   .ref(`userProducts/${this.props.uidLogged}/CleanProduct`)
-    //   .once("value", result => {
-    //     console.log("result from useRProduct", result.val());
-    //     console.log("uid", this.props.uidLogged);
+
     database
       .ref(`userProducts/${this.props.uidLogged}/${this.props.status}`)
-      .push(productToUpload);
+      .push(productToUpload)
+      .then();
   };
 
   render() {
@@ -79,9 +79,11 @@ class SaveMyProduct extends Component {
               </FormGroup>
             </Form>
 
-            <Button onClick={this.clickAddProduct} bsStyle="primary">
-              Save this product
-            </Button>
+            <LinkContainer to="/Account">
+              <Button onClick={this.clickAddProduct} bsStyle="primary">
+                Save this product
+              </Button>
+            </LinkContainer>
           </WrapperColumn>
         </BlueWrapper>
       );
