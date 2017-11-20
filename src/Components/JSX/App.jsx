@@ -4,6 +4,10 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 import "../CSS/App.css";
 import "bootstrap/dist/css/bootstrap.css";
 import { Grid } from "react-bootstrap";
+import NavigationForTests from "./NavigationForTests";
+import SaveMyProduct from "./SaveMyProduct";
+import Account from "./Account";
+import IngredientList from "./IngredientList";
 import InputFile from "./InputFile.jsx";
 import ImageLoading from "./ImageLoading";
 import TestSucceeded from "./TestSucceeded";
@@ -24,9 +28,29 @@ class App extends Component {
       ingredients: [],
       uploadImageUrl: "",
       presentChemicals: [],
-      undefinedView: false
+      undefinedView: false,
+      user: "",
+      uid: "",
+      photoUrl: ""
     };
   }
+
+  componentDidMount() {
+    firebase.auth().onAuthStateChanged(user => {
+      if (user) {
+        this.logUser(user);
+      }
+    });
+  }
+
+  logUser = user => {
+    console.log("log User updated");
+    this.setState({
+      user: user.displayName,
+      uid: user.uid,
+      photoUrl: user.photoURL
+    });
+  };
 
   handleInput = event => {
     const file = event.target.files[0];
@@ -126,6 +150,7 @@ class App extends Component {
   };
 
   clearState = () => {
+    console.log("clearstate");
     this.setState({
       isLoading: false,
       ingredients: [],
@@ -137,9 +162,71 @@ class App extends Component {
 
   render() {
     return (
+<<<<<<< HEAD
       <div>
         <Barcode />
       </div>
+=======
+      <BrowserRouter>
+        <div>
+          <NavigationForTests photoUrl={this.state.photoUrl} />
+
+          <Route
+            exact
+            path="/"
+            render={() => {
+              if (this.state.isLoading) {
+                return <ImageLoading url={this.state.uploadImageUrl} />;
+              } else if (this.state.undefinedView) {
+                return <TestUndefined reset={this.clearState} />;
+              } else if (this.state.presentChemicals.length >= 1) {
+                return (
+                  <TestFailed
+                    presentChemicals={this.state.presentChemicals}
+                    reset={this.clearState}
+                  />
+                );
+              } else if (
+                this.state.uploadImageUrl &&
+                !this.state.presentChemicals.length
+              ) {
+                return <TestSucceeded reset={this.clearState} />;
+              } else {
+                return (
+                  <Grid>
+                    <InputFile updateUploadImage={this.handleInput} />
+                  </Grid>
+                );
+              }
+            }}
+          />
+          <Route exact path="/IngredientList" component={IngredientList} />
+          <Route
+            exact
+            path="/Account"
+            render={() => (
+              <Account
+                userLogged={this.state.user}
+                updateLoginState={this.logUser}
+                uidLogged={this.state.uid}
+              />
+            )}
+          />
+          <Route
+            exact
+            path="/save/:status"
+            render={routeProps => (
+              <SaveMyProduct
+                userLogged={this.state.user}
+                uidLogged={this.state.uid}
+                updateLoginState={this.logUser}
+                status={routeProps.match.params.status}
+              />
+            )}
+          />
+        </div>
+      </BrowserRouter>
+>>>>>>> prototype-static
     );
   }
 }

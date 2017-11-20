@@ -1,31 +1,52 @@
 import React, { Component } from "react";
 import { Link, Route } from "react-router-dom";
+import styled from "styled-components";
 import { Nav, Navbar, NavItem } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
+import Account from "../../icons/account.svg";
+
+const IconAccount = styled.img`
+  width: 40px;
+  border-radius: 50%;
+`;
+
+const NavBar = styled.div`
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+`;
 
 class NavigationForTests extends Component {
+  componentDidUpdate(prevProps, prevState) {
+    if (this.props.photoUrl !== prevProps.photoUrl) {
+    }
+  }
+
   render() {
-    return (
-      <header>
-        <Nav bsStyle="pills">
-          <LinkContainer to="/">
-            <NavItem eventKey={0}>InFile</NavItem>
-          </LinkContainer>
-          <LinkContainer to="/ImageLoading">
-            <NavItem eventKey={1}>Load</NavItem>
-          </LinkContainer>
-          <LinkContainer to="/TestSucceeded">
-            <NavItem eventKey={2}>Succ</NavItem>
-          </LinkContainer>
-          <LinkContainer to="/TestFailed">
-            <NavItem eventKey={3}>Fail</NavItem>
-          </LinkContainer>
-          <LinkContainer to="/TestUndefined">
-            <NavItem eventKey={4}>Undefine</NavItem>
-          </LinkContainer>
-        </Nav>
-      </header>
-    );
+    if (!this.props.photoUrl) {
+      return (
+        <NavBar>
+          <Link to="/">
+            <IconAccount src={Account} alt="" />
+          </Link>
+          <Link to="/Account">
+            <IconAccount src={Account} alt="" />
+          </Link>
+        </NavBar>
+      );
+    } else {
+      return (
+        <NavBar>
+          <Link to="/">
+            <IconAccount src={Account} alt="" />
+          </Link>
+
+          <Link to="/Account">
+            <IconAccount src={this.props.photoUrl} alt="" />
+          </Link>
+        </NavBar>
+      );
+    }
   }
 }
 
