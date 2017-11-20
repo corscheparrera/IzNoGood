@@ -1,6 +1,7 @@
 import Quagga from "quagga";
 import React, { Component } from "react";
 import "../CSS/Barcode.css";
+import Api from "./api.js";
 
 class Barcode extends Component {
   componentDidMount() {
@@ -80,9 +81,9 @@ class Barcode extends Component {
           if (result === undefined) {
             alert("Not code in the picture.");
           } else if (result.codeResult) {
-            let json = '{"upc": "' + result.codeResult.code + '"}';
+            let upcCode = result.codeResult.code;
 
-            self.handleData(json);
+            self.handleData(upcCode);
           } else {
             alert("Not detected");
           }
@@ -109,8 +110,11 @@ class Barcode extends Component {
         src: null
       },
 
-      handleData: function(json) {
-        console.log(json);
+      handleData: function(code) {
+        console.log(code);
+        Api.getProductData(code).then(res => {
+          console.log("inside barcode.jsx", res.body["0"].brand);
+        });
       }
     };
 
