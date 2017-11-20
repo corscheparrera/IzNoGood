@@ -1,0 +1,90 @@
+#navbar {
+  background-color: rgba(255, 255, 255, 0.89);
+  font-weight: bold;
+  min-height: 65px;
+  flex: 0 0 auto;
+  z-index: 999;
+}
+
+#navbar .container-fluid {
+  padding: 0 30px;
+}
+
+#navbar .navbar-header {
+  display: flex;
+  align-items: center;
+}
+
+.navbar-collapse.collapse > ul > img,
+.navbar-header > a > img {
+  margin: 15px 0;
+  height: 45px;
+  width: auto;
+}
+
+#navbar > div > div.navbar-collapse.collapse > ul > img {
+  border-radius: 50%;
+  margin-right: -10px;
+}
+
+#navbar .nav > li > a {
+  margin: 5px 5px;
+  padding: 0;
+}
+
+#navbar li a {
+  display: block;
+  line-height: 55px;
+  color: #313332;
+}
+
+#navbar li a:hover {
+  color: #777;
+}
+
+@media only screen and (min-width: 100px) {
+  .collapse {
+    display: block;
+  }
+
+  .navbar-header {
+    float: left;
+  }
+
+  .navbar-toggle {
+    display: none;
+  }
+
+  .navbar-nav.navbar-left {
+    float: left;
+    margin: 0;
+  }
+
+  .navbar-nav.navbar-right {
+    float: right;
+    margin: 0;
+  }
+  .navbar-nav > li {
+    float: left;
+  }
+  .navbar-nav > li > a {
+    padding-top: 15px;
+    padding-bottom: 15px;
+  }
+}
+
+@media only screen and (max-width: 100px) {
+  .collapse {
+    display: none;
+  }
+
+  .navbar-header {
+    display: block;
+  }
+}
+
+@media only screen and (max-width: 420px) {
+  #navbar > div > div.navbar-collapse.collapse > ul > li > a {
+    display: none;
+  }
+}
