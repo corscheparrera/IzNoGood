@@ -15,7 +15,7 @@ import TestFailed from "./TestFailed";
 import TestUndefined from "./TestUndefined";
 import fire from "./Firebase.jsx";
 import Barcode from "./Barcode.jsx";
-
+import stringSimilarity from "string-similarity";
 const storageRef = firebase.storage();
 const db = fire.database();
 // const databaseRef = firebase.database();
@@ -31,7 +31,8 @@ class App extends Component {
       undefinedView: false,
       user: "",
       uid: "",
-      photoUrl: ""
+      photoUrl: "",
+      productInputName: ""
     };
   }
 
@@ -50,6 +51,10 @@ class App extends Component {
       uid: user.uid,
       photoUrl: user.photoURL
     });
+  };
+
+  handleBarcode = productName => {
+    this.setState({ productInputName: productName });
   };
 
   handleInput = event => {
@@ -87,9 +92,14 @@ class App extends Component {
   };
 
   storeGoogleVisionRes = visionString => {
+    console.log(visionString);
     var ingredients = visionString
       .toLowerCase()
-      .replace(/(\r\n|\n|\r)/gm, " ")
+      .replace(/\./g, ",")
+      .replace(/\//g, ",")
+      .replace("", ",")
+      .replace(/\n/g, " ")
+      .replace(/\s/g, "")
       .split(",");
 
     // Get a database reference
@@ -132,16 +142,21 @@ class App extends Component {
   };
   lookForRisk = data => {
     var chemicals = Object.keys(data);
-
+    // var chemi = chemicals.map(chem =>
+    //   chem.replace(/-/g, "").replace(/\s+/g, "")
+    // );
+    console.log(chemicals);
     chemicals.map(chem => {
       this.state.ingredients.map(ingr => {
-        if (ingr.includes(chem)) {
+        if (stringSimilarity.compareTwoStrings(ingr, chem) > 0.8) {
           console.log("HEY DUDE, WATCH OUT, " + chem + " IS GONNA KILL U!");
+
           this.setState({
             presentChemicals: this.state.presentChemicals.concat({
               chemical: chem,
               categorie: data[chem].categorie,
-              reference: data[chem].reference
+              reference: data[chem].reference,
+              similarity: stringSimilarity.compareTwoStrings(ingr, chem)
             })
           });
         }
@@ -162,11 +177,6 @@ class App extends Component {
 
   render() {
     return (
-<<<<<<< HEAD
-      <div>
-        <Barcode />
-      </div>
-=======
       <BrowserRouter>
         <div>
           <NavigationForTests photoUrl={this.state.photoUrl} />
@@ -194,6 +204,7 @@ class App extends Component {
               } else {
                 return (
                   <Grid>
+                    {/*<Barcode handleBarcode={this.handleBarcode} />*/}
                     <InputFile updateUploadImage={this.handleInput} />
                   </Grid>
                 );
@@ -226,7 +237,6 @@ class App extends Component {
           />
         </div>
       </BrowserRouter>
->>>>>>> prototype-static
     );
   }
 }

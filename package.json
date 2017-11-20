@@ -18,6 +18,7 @@
     "react-router-dom": "^4.2.2",
     "react-scripts": "1.0.17",
     "semantics3-node": "0.0.3",
+    "string-similarity": "^1.2.0",
     "styled-components": "^2.2.3",
     "superagent": "^3.8.1"
   },

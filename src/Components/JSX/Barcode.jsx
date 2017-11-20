@@ -110,11 +110,20 @@ class Barcode extends Component {
         src: null
       },
 
-      handleData: function(code) {
-        console.log(code);
+      handleData: code => {
+        // var CORS_PROXY = "https://cors-anywhere.herokuapp.com/";
+        // var url = `${CORS_PROXY}https://api.upcitemdb.com/prod/trial/lookup?upc=${code}`;
+        // console.log(code);
         Api.getProductData(code).then(res => {
           console.log("inside barcode.jsx", res.body["0"].brand);
         });
+        let query = code;
+
+        // fetch(url)
+        //   .then(result => result.json())
+        //   .then(result => {
+        //     this.props.handleBarcode(result.items["0"].title);
+        //   });
       }
     };
 
