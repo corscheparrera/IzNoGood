@@ -15,7 +15,7 @@ import { LinkContainer } from "react-router-bootstrap";
 
 import BlueWrapper from "./StyledComponents/BlueWrapper";
 import WrapperColumn from "./StyledComponents/WrapperColumn";
-import Template from "../../icons/picture-front-instructions.jpg";
+import Template from "../../icons/picture-front2-instructions.jpg";
 import Plus from "../../icons/icons8-plus.svg";
 
 const storageRef = firebase.storage();
@@ -26,6 +26,7 @@ const database = firebase.database();
 const InstructionPicture = styled.img`
   height: 300px;
   margin-top: 30px;
+  margin-bottom: 30px;
 `;
 
 const Instructions = styled.h3`
@@ -125,7 +126,7 @@ class SaveMyProduct extends Component {
         <WrapperColumn>
           <InstructionPicture src={Template} />
           <div>
-            <label for="file-input">
+            <label style={{ textAlign: "center" }} for="file-input">
               <Instructions>
                 Take a picture of your product to save it
               </Instructions>
