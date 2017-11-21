@@ -17,9 +17,7 @@ const styles = {
   red: {
     color: "#FF4136"
   },
-  light: {
-    fontWeight: "bold"
-  },
+
   padding: {
     paddingTop: "20px"
   },
@@ -33,8 +31,10 @@ const styles = {
     fontWeight: 200,
     fontFamily: "Helvetica Neue"
   },
-  paddingLeft: {
-    paddingLeft: "10px"
+  align: {
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center"
   }
 };
 
@@ -62,7 +62,7 @@ class TestFailed extends Component {
           }
         />
         <div
-          style={styles.paddingLeft}
+          style={{ paddingLeft: "10px" }}
         >{` ${item.chemical} is a ${item.categorie}`}</div>
       </div>
     );
@@ -72,40 +72,38 @@ class TestFailed extends Component {
     return (
       <Grid fluid style={styles.fontStyle}>
         <Row>
-          <Col md={11} mdOffset={1} text-center>
-            <Row>
-              <Col md={3} mdOffset={4} text-center>
-                <img
-                  src={require("../../icons/thinking.png")}
-                  height="150px"
-                  alt=""
-                  className="center-block"
-                  style={styles.padding}
-                />
-              </Col>
-            </Row>
+          <Col style={styles.padding}>
+            <img
+              src={require("../../icons/thinking.png")}
+              height="150px"
+              alt=""
+              className="center-block"
+              style={styles.padding}
+            />
           </Col>
         </Row>
-        <Row>
-          <Col md={3} mdOffset={4} text-center style={styles.padding}>
-            <div style={{ fontSize: "28px" }}>Suspicious ingredients</div>
-            {this.props.presentChemicals.map(this.displayChemicals)}
-          </Col>
-        </Row>
-        <Row>
-          <Col md={11} mdOffset={1} text-center style={styles.padding}>
-            <Row>
-              <Col md={3} mdOffset={4} text-center>
+        <div style={styles.align}>
+          <Row>
+            <Col style={styles.padding}>
+              <div style={{ fontSize: "28px" }}>Suspicious ingredients</div>
+              {this.props.presentChemicals.map(this.displayChemicals)}
+            </Col>
+          </Row>
+          <Row>
+            <Col style={styles.padding}>
+              <div>
                 <Link to="/save/DirtyProducts">
                   <Button>Save to history</Button>
                 </Link>
+              </div>
+              <div>
                 <Link to="/IngredientList">
-                  <Button>Learn more</Button>
+                  <Button style={{ marginTop: "10px" }}>Learn more</Button>
                 </Link>
-              </Col>
-            </Row>
-          </Col>
-        </Row>
+              </div>
+            </Col>
+          </Row>
+        </div>
       </Grid>
     );
   }
