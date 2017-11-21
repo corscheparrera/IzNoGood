@@ -95,10 +95,8 @@ class App extends Component {
     console.log(visionString);
     var ingredients = visionString
       .toLowerCase()
-      .replace(/:/g, ",")
-      .replace(/\./g, ",")
+      .replace(/:|\.|""/g, ",")
       .replace(/\//g, ",")
-      .replace("", ",")
       .replace(/\n/g, " ")
       .replace(/\s/g, "")
       .split(",");
@@ -150,7 +148,6 @@ class App extends Component {
       }
     };
     // itération sur l'object contentant les produits chimiques
-
     for (const [key, val] of iterableObj) {
       this.state.ingredients.map(ingr => {
         if (stringSimilarity.compareTwoStrings(ingr, val.shortened) > 0.8) {
