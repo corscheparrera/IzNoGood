@@ -23,6 +23,9 @@
   height: 45px;
   width: auto;
 }
+.undefinedAccount {
+  font-weight: 100;
+}
 
 #navbar > div > div.navbar-collapse.collapse > ul > img {
   border-radius: 50%;

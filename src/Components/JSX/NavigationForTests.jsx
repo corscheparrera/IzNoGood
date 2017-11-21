@@ -18,20 +18,16 @@ class Navigation extends Component {
         <Navbar id="navbar" fluid>
           <Navbar.Header>
             <Link to="/">
-              <img
-                alt=""
-                className="logo"
-                src={require("../../icons/dna.svg")}
-              />
+              <img alt="" src={require("../../icons/dna.svg")} />
             </Link>
           </Navbar.Header>
           <Navbar.Collapse>
             <Nav pullRight>
               <LinkContainer to="/Account">
                 <img
+                  className="undefinedAccount"
                   alt=""
-                  className="logo"
-                  src={require("../../icons/account.svg")}
+                  src={require("../../icons/man.svg")}
                 />
               </LinkContainer>
             </Nav>
