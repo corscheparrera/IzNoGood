@@ -15,7 +15,7 @@ import TestFailed from "./TestFailed";
 import TestUndefined from "./TestUndefined";
 import fire from "./Firebase.jsx";
 import Barcode from "./Barcode.jsx";
-
+import stringSimilarity from "string-similarity";
 const storageRef = firebase.storage();
 const db = fire.database();
 // const databaseRef = firebase.database();
@@ -31,7 +31,8 @@ class App extends Component {
       undefinedView: false,
       user: "",
       uid: "",
-      photoUrl: ""
+      photoUrl: "",
+      productInputName: ""
     };
   }
 
@@ -50,6 +51,10 @@ class App extends Component {
       uid: user.uid,
       photoUrl: user.photoURL
     });
+  };
+
+  handleBarcode = productName => {
+    this.setState({ productInputName: productName });
   };
 
   handleInput = event => {
@@ -87,9 +92,13 @@ class App extends Component {
   };
 
   storeGoogleVisionRes = visionString => {
+    console.log(visionString);
     var ingredients = visionString
       .toLowerCase()
-      .replace(/(\r\n|\n|\r)/gm, " ")
+      .replace(/:|\.|""/g, ",")
+      .replace(/\//g, ",")
+      .replace(/\n/g, " ")
+      .replace(/\s/g, "")
       .split(",");
 
     // Get a database reference
@@ -132,22 +141,31 @@ class App extends Component {
     return chemicalsRef.once("value").then(x => x.val());
   };
   lookForRisk = data => {
-    var chemicals = Object.keys(data);
-
-    chemicals.map(chem => {
+    //création d'un object itérable pour pouvoir utiliser 'for of' sur data
+    const iterableObj = {
+      *[Symbol.iterator]() {
+        yield* Object.entries(data);
+      }
+    };
+    // itération sur l'object contentant les produits chimiques
+    for (const [key, val] of iterableObj) {
       this.state.ingredients.map(ingr => {
-        if (ingr.includes(chem)) {
-          console.log("HEY DUDE, WATCH OUT, " + chem + " IS GONNA KILL U!");
+        if (stringSimilarity.compareTwoStrings(ingr, val.shortened) > 0.8) {
+          console.log("HEY DUDE, WATCH OUT, " + key + " IS GONNA KILL U!");
           this.setState({
             presentChemicals: this.state.presentChemicals.concat({
-              chemical: chem,
-              categorie: data[chem].categorie,
-              reference: data[chem].reference
+              chemical: key,
+              categorie: val.categorie,
+              reference: val.reference,
+              similarity: stringSimilarity.compareTwoStrings(
+                ingr,
+                val.shortened
+              )
             })
           });
         }
       });
-    });
+    }
   };
 
   clearState = () => {
@@ -193,6 +211,7 @@ class App extends Component {
               } else {
                 return (
                   <Grid>
+                    {/*<Barcode handleBarcode={this.handleBarcode} />*/}
                     <InputFile updateUploadImage={this.handleInput} />
                   </Grid>
                 );

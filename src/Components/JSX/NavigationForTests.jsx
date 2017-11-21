@@ -15,23 +15,19 @@ class Navigation extends Component {
   render() {
     if (!this.props.photoUrl) {
       return (
-        <Navbar id="navbar" fluid fixedTop>
+        <Navbar id="navbar" fluid>
           <Navbar.Header>
             <Link to="/">
-              <img
-                alt=""
-                className="logo"
-                src={require("../../icons/dna.svg")}
-              />
+              <img alt="" src={require("../../icons/dna.svg")} />
             </Link>
           </Navbar.Header>
           <Navbar.Collapse>
             <Nav pullRight>
               <LinkContainer to="/Account">
                 <img
+                  className="undefinedAccount"
                   alt=""
-                  className="logo"
-                  src={require("../../icons/account.svg")}
+                  src={require("../../icons/man.svg")}
                 />
               </LinkContainer>
             </Nav>
@@ -40,7 +36,7 @@ class Navigation extends Component {
       );
     } else {
       return (
-        <Navbar id="navbar" collapseOnSelect fluid fixedTop>
+        <Navbar id="navbar" collapseOnSelect fluid>
           <Navbar.Header>
             <Link to="/">
               <img
