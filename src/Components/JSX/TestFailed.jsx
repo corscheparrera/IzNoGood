@@ -5,13 +5,7 @@ import { Button, Grid, Col, Row } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import "font-awesome/css/font-awesome.css";
 
-import Thinking from "../../icons/thinking.png";
-import Warning from "../../icons/warning.svg";
-import BlueWrapper from "./StyledComponents/BlueWrapper";
-import WrapperColumn from "./StyledComponents/WrapperColumn";
-
 const FontAwesome = require("react-fontawesome");
-const FailedText = styled.h4`textalign: center;`;
 
 const styles = {
   fuchsia: {
@@ -82,7 +76,7 @@ class TestFailed extends Component {
             <Row>
               <Col md={3} mdOffset={4} text-center>
                 <img
-                  src={Thinking}
+                  src={require("../../icons/thinking.png")}
                   height="150px"
                   alt=""
                   className="center-block"
