@@ -1,10 +1,11 @@
 .fileUpload {
   margin-top: 30vh;
   padding-top: 20px;
-  border: 2px dashed rgba(177, 13, 201, 1) !important;
-  color: #b10dc9 !important;
-  width: 230px;
-  height: 150px;
+  /* border: 1px solid darkgrey !important;
+  border-radius: 10%;
+  color: black !important;
+  width: 50px;
+  height: 100px; */
 }
 
 .fileUpload:focus {
