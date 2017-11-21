@@ -239,6 +239,7 @@ class App extends Component {
                 uidLogged={this.state.uid}
                 updateLoginState={this.logUser}
                 status={routeProps.match.params.status}
+                historyPush={routeProps.history.push}
               />
             )}
           />

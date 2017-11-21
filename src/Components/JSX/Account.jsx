@@ -14,11 +14,18 @@ const providerGoogle = new firebase.auth.GoogleAuthProvider();
 // const providerFacebook = new firebase.auth.FacebookAuthProvider();
 
 const ProductImage = styled.img`
-  text-align: left;
-  border-radius: 50%;
-  height: 45px;
-  width: 45px;
+  transform: rotate(90deg);
+  height: 120px;
+  width: 120px;
+  border: solid 1px darkgrey;
+  margin: 2px;
 `;
+
+const WrapperMultiProduct = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+`;
+
 const WrapperSingleProduct = styled.div`
   margin-left: 15px;
   margin-bottom: 15px;
@@ -100,13 +107,14 @@ class componentName extends Component {
 
     let htmlProduct = cleanProductsScanned.map(item => {
       return (
-        <WrapperSingleProduct>
-          <ProductImage src={state[item].ImageUrl} alt="" />
-          <WrapperSingleProductText>
-            <ProductTitle> {state[item].ProductName} </ProductTitle>
-            {state[item].ProductDescription}
-          </WrapperSingleProductText>
-        </WrapperSingleProduct>
+        // <WrapperSingleProduct>
+        //   <ProductImage src={state[item].ImageUrl} alt="" />
+        //   <WrapperSingleProductText>
+        //     <ProductTitle> {state[item].ProductName} </ProductTitle>
+        //     {state[item].ProductDescription}
+        //   </WrapperSingleProductText>
+        // </WrapperSingleProduct>
+        <ProductImage src={state[item].ImageUrl} alt="" />
       );
     });
     console.log("htmlProduct", htmlProduct);
@@ -124,14 +132,12 @@ class componentName extends Component {
       );
     } else {
       return (
-        <BlueWrapper>
-          <div>
-            <SectionProducts>Your clean product list </SectionProducts>
-            <div>{this.displayProducts(this.state.cleanProducts)}</div>
-            <SectionProducts>Your dirty product list </SectionProducts>
-            <div>{this.displayProducts(this.state.dirtyProducts)}</div>
-          </div>
-        </BlueWrapper>
+        <div>
+          <SectionProducts>Your clean product list </SectionProducts>
+          <div>{this.displayProducts(this.state.cleanProducts)}</div>
+          <SectionProducts>Your dirty product list </SectionProducts>
+          <div>{this.displayProducts(this.state.dirtyProducts)}</div>
+        </div>
       );
     }
   }
