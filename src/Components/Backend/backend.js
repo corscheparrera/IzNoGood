@@ -27,7 +27,8 @@ var populate = function() {
   x.map(data => {
     ref.child(data[0]).set({
       categorie: data[1],
-      reference: "European commission of Health"
+      reference: "European commission of Health",
+      shortened: data[0].replace(/-/g, "").replace(/\s+/g, "")
     });
   });
 };

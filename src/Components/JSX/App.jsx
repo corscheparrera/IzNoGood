@@ -95,6 +95,7 @@ class App extends Component {
     console.log(visionString);
     var ingredients = visionString
       .toLowerCase()
+      .replace(/:/g, ",")
       .replace(/\./g, ",")
       .replace(/\//g, ",")
       .replace("", ",")
@@ -142,27 +143,32 @@ class App extends Component {
     return chemicalsRef.once("value").then(x => x.val());
   };
   lookForRisk = data => {
-    var chemicals = Object.keys(data);
-    // var chemi = chemicals.map(chem =>
-    //   chem.replace(/-/g, "").replace(/\s+/g, "")
-    // );
-    console.log(chemicals);
-    chemicals.map(chem => {
-      this.state.ingredients.map(ingr => {
-        if (stringSimilarity.compareTwoStrings(ingr, chem) > 0.8) {
-          console.log("HEY DUDE, WATCH OUT, " + chem + " IS GONNA KILL U!");
+    //création d'un object itérable pour pouvoir utiliser 'for of' sur data
+    const iterableObj = {
+      *[Symbol.iterator]() {
+        yield* Object.entries(data);
+      }
+    };
+    // itération sur l'object contentant les produits chimiques
 
+    for (const [key, val] of iterableObj) {
+      this.state.ingredients.map(ingr => {
+        if (stringSimilarity.compareTwoStrings(ingr, val.shortened) > 0.8) {
+          console.log("HEY DUDE, WATCH OUT, " + key + " IS GONNA KILL U!");
           this.setState({
             presentChemicals: this.state.presentChemicals.concat({
-              chemical: chem,
-              categorie: data[chem].categorie,
-              reference: data[chem].reference,
-              similarity: stringSimilarity.compareTwoStrings(ingr, chem)
+              chemical: key,
+              categorie: val.categorie,
+              reference: val.reference,
+              similarity: stringSimilarity.compareTwoStrings(
+                ingr,
+                val.shortened
+              )
             })
           });
         }
       });
-    });
+    }
   };
 
   clearState = () => {
