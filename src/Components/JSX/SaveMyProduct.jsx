@@ -3,6 +3,7 @@ import * as firebase from "firebase";
 import fire from "./Firebase.jsx";
 import Login from "./Login";
 import styled from "styled-components";
+import ImageTools from "./ResizeImage.js";
 import {
   Form,
   FormGroup,
@@ -75,27 +76,40 @@ class SaveMyProduct extends Component {
     // check if file exists
     const file = event.target.files[0];
     if (!file) return;
-    // this.setState({ isLoading: true });
-    console.log("fiestetp", file);
-    storageRef
-      .ref()
-      .child(`${file.name}`)
-      .put(file)
-      .then(() => {
-        console.log("Upload file in Firestorage");
+
+    // Resize Picture
+    ImageTools.resize(
+      file,
+      {
+        width: 450, // maximum width
+        height: 300 // maximum height
+      },
+      (blob, didItResize) => {
+        // didItResize will be true if it managed to resize it, otherwise false (and will return the original file as 'blob')
+        console.log("fiestetp", file);
+        const randomNumber = Math.floor(Math.random() * 10000000);
+        console.log("random", randomNumber);
         storageRef
           .ref()
-          .child(`${file.name}`)
-          .getDownloadURL()
-          .then(url => this.setState({ uploadImageUrl: url }))
+          .child(`${randomNumber}${file.name}`)
+          .put(blob)
           .then(() => {
-            console.log("Upload file in DB + state", this.state.uploadImageUrl);
-            database
-              .ref(`userProducts/${this.props.uidLogged}/${this.props.status}`)
-              .push({ ImageUrl: this.state.uploadImageUrl });
-          })
-          .then(() => this.handleSearch());
-      });
+            storageRef
+              .ref()
+              .child(`${randomNumber}${file.name}`)
+              .getDownloadURL()
+              .then(url => this.setState({ uploadImageUrl: url }))
+              .then(() => {
+                database
+                  .ref(
+                    `userProducts/${this.props.uidLogged}/${this.props.status}`
+                  )
+                  .push({ ImageUrl: this.state.uploadImageUrl });
+              })
+              .then(() => this.props.historyPush("/Account"));
+          });
+      }
+    );
   };
 
   render() {
