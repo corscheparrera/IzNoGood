@@ -15,7 +15,7 @@ class Navigation extends Component {
   render() {
     if (!this.props.photoUrl) {
       return (
-        <Navbar id="navbar" fluid fixedTop>
+        <Navbar id="navbar" fluid>
           <Navbar.Header>
             <Link to="/">
               <img
