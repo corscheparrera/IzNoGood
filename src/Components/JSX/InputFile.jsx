@@ -9,17 +9,16 @@ const styles = {
   }
 };
 const Input = styled.label`focus: none !important;`;
+
 const ContainerFlex = styled.div`
   display: flex;
-  flex-direction: column;
   align-items: center;
+  justify-content: center;
+  flex-direction: column;
   font-size: 28px;
   font-weight: 200;
 `;
-const ItemFlex = styled.div`
-  width: 300px;
-  max-width: 80%;
-`;
+const ItemFlex = styled.div`max-width: 80%;`;
 const Image = styled.img`
   height: 280px;
   margin: 20px;
@@ -42,3 +41,9 @@ class InputFile extends Component {
 }
 
 export default InputFile;
+
+/*<ContainerFlex>
+        <div>Take a picture of your products ingredients</div>
+        <Image src={require("../../icons/picture-instructions.jpg")} />
+
+      </ContainerFlex>*/

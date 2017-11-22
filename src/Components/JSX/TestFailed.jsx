@@ -16,6 +16,11 @@ const styles = {
   },
   red: {
     color: "#FF4136"
+  },
+  btnCustom: {
+    width: "120px",
+    height: "40px",
+    margin: "10px"
   }
 };
 const ContainerFlex = styled.div`
@@ -77,12 +82,13 @@ class TestFailed extends Component {
         <div> {this.props.presentChemicals.map(this.displayChemicals)}</div>
 
         <Link to="/save/DirtyProducts">
-          <Button>Save to history</Button>
+          <Button style={styles.btnCustom}>Save to history</Button>
         </Link>
+        <Button style={styles.btnCustom} onClick={this.props.reset}>
+          Re-scan
+        </Button>
         <Link to="/IngredientList">
-          <Button style={{ marginTop: "10px", marginBottom: "20px" }}>
-            Learn more
-          </Button>
+          <Button style={styles.btnCustom}>Learn more</Button>
         </Link>
       </ContainerFlex>
     );

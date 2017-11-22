@@ -2,7 +2,13 @@ import React, { Component } from "react";
 import styled, { css } from "styled-components";
 import { Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
-
+const styles = {
+  btnCustom: {
+    width: "120px",
+    height: "40px",
+    margin: "10px"
+  }
+};
 const ContainerFlex = styled.div`
   display: flex;
   flex-direction: column;
@@ -23,10 +29,13 @@ class TestSucceeded extends Component {
         <div>Your product is fine!</div>
         <Image src={require("../../icons/happy.svg")} />
         <Link to="/save/CleanProducts">
-          <Button>Save to history</Button>
+          <Button style={styles.btnCustom}>Save to history</Button>
         </Link>
+        <Button style={styles.btnCustom} onClick={this.props.reset}>
+          Re-scan
+        </Button>
         <Link to="/IngredientList">
-          <Button>Learn more</Button>
+          <Button style={styles.btnCustom}>Learn more</Button>
         </Link>
       </ContainerFlex>
     );

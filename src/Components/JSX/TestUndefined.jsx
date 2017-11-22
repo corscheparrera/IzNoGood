@@ -1,7 +1,13 @@
 import React, { Component } from "react";
 import styled, { css } from "styled-components";
 import { Button } from "react-bootstrap";
-
+const styles = {
+  btnCustom: {
+    width: "120px",
+    height: "40px",
+    margin: "10px"
+  }
+};
 const ContainerFlex = styled.div`
   display: flex;
   flex-direction: column;
@@ -25,7 +31,9 @@ class TestUndefined extends Component {
           We couldn't scan your picture. Try again with a better focus!
         </ItemFlex>
         <Image src={require("../../icons/surprised.svg")} />
-        <Button onClick={this.props.reset}>Retake picture</Button>
+        <Button style={styles.btnCustom} onClick={this.props.reset}>
+          Retake picture
+        </Button>
       </ContainerFlex>
     );
   }
