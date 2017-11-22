@@ -157,7 +157,8 @@ class App extends Component {
             presentChemicals: this.state.presentChemicals.concat({
               chemical: key,
               categorie: val.categorie,
-              reference: val.reference,
+              risk: val.score,
+              link: val.link,
               similarity: stringSimilarity.compareTwoStrings(
                 ingr,
                 val.shortened
@@ -189,6 +190,7 @@ class App extends Component {
             photoUrl={this.state.photoUrl}
             reset={this.clearState}
           />
+<<<<<<< HEAD
 
           <Route
             exact
@@ -245,6 +247,64 @@ class App extends Component {
               />
             )}
           />
+=======
+          <Grid fluid>
+            <Route
+              exact
+              path="/"
+              render={() => {
+                if (this.state.isLoading) {
+                  return <ImageLoading url={this.state.uploadImageUrl} />;
+                } else if (this.state.undefinedView) {
+                  return <TestUndefined reset={this.clearState} />;
+                } else if (this.state.presentChemicals.length >= 1) {
+                  return (
+                    <TestFailed
+                      presentChemicals={this.state.presentChemicals}
+                      reset={this.clearState}
+                    />
+                  );
+                } else if (
+                  this.state.uploadImageUrl &&
+                  !this.state.presentChemicals.length
+                ) {
+                  return <TestSucceeded reset={this.clearState} />;
+                } else {
+                  return (
+                    <Grid>
+                      {/*<Barcode handleBarcode={this.handleBarcode} />*/}
+                      <InputFile updateUploadImage={this.handleInput} />
+                    </Grid>
+                  );
+                }
+              }}
+            />
+            <Route exact path="/IngredientList" component={IngredientList} />
+            <Route
+              exact
+              path="/Account"
+              render={() => (
+                <Account
+                  userLogged={this.state.user}
+                  updateLoginState={this.logUser}
+                  uidLogged={this.state.uid}
+                />
+              )}
+            />
+            <Route
+              exact
+              path="/save/:status"
+              render={routeProps => (
+                <SaveMyProduct
+                  userLogged={this.state.user}
+                  uidLogged={this.state.uid}
+                  updateLoginState={this.logUser}
+                  status={routeProps.match.params.status}
+                />
+              )}
+            />
+          </Grid>
+>>>>>>> barcode
         </div>
       </BrowserRouter>
     );
