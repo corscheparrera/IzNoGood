@@ -1,7 +1,7 @@
 #navbar {
   background-color: rgba(255, 255, 255, 0.89);
   font-weight: bold;
-  min-height: 65px;
+  min-height: 55px;
   flex: 0 0 auto;
   z-index: 999;
 }
@@ -19,9 +19,12 @@
 
 .navbar-collapse.collapse > ul > img,
 .navbar-header > a > img {
-  margin: 15px 0;
+  margin: 10px 0;
   height: 45px;
   width: auto;
+}
+.undefinedAccount {
+  font-weight: 100;
 }
 
 #navbar > div > div.navbar-collapse.collapse > ul > img {

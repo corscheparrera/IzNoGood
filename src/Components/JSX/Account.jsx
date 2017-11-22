@@ -11,27 +11,45 @@ const database = firebase.database();
 const providerGoogle = new firebase.auth.GoogleAuthProvider();
 // const providerFacebook = new firebase.auth.FacebookAuthProvider();
 
-const ProductImage = styled.img`
-  text-align: left;
-  border-radius: 50%;
-  height: 45px;
-  width: 45px;
+const ImagePreview = styled.div`
+  transform: rotate(90deg);
+  width: 150px;
+  height: 150px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  margin: 1px;
 `;
-const WrapperSingleProduct = styled.div`
-  margin-left: 15px;
-  margin-bottom: 15px;
+
+// const ProductImage = styled.img`
+//   transform: rotate(90deg);
+//   height: 120px;
+//   width: 160px;
+//   border: solid 1px darkgrey;
+//   margin: 2px;
+// `;
+
+const WrapperMultiProduct = styled.div`
   display: flex;
-  justify-content: flex-start;
-  padding: 8px;
-  border-width: thin;
-  border-bottom: 1px solid lightgrey;
+  flex-wrap: wrap;
+  justify-content: center;
 `;
-const WrapperSingleProductText = styled.div`
-  display: flex;
-  margin-left: 5px;
-  flex-direction: column;
-  font-size: 12px;
-`;
+
+// const WrapperSingleProduct = styled.div`
+//   margin-left: 15px;
+//   margin-bottom: 15px;
+//   display: flex;
+//   justify-content: flex-start;
+//   padding: 8px;
+//   border-width: thin;
+//   border-bottom: 1px solid lightgrey;
+// `;
+// const WrapperSingleProductText = styled.div`
+//   display: flex;
+//   margin-left: 5px;
+//   flex-direction: column;
+//   font-size: 12px;
+// `;
 
 const SectionProducts = styled.h4`
   padding: 10px 0px;
@@ -41,11 +59,11 @@ const SectionProducts = styled.h4`
   background-color: #edeeef;
 `;
 
-const ProductTitle = styled.span`
-font-weight: bold;
-text-transform: uppercase;
-font-syze:12px;
-}`;
+// const ProductTitle = styled.span`
+// font-weight: bold;
+// text-transform: uppercase;
+// font-syze:12px;
+// }`;
 
 class componentName extends Component {
   constructor() {
@@ -98,13 +116,17 @@ class componentName extends Component {
 
     let htmlProduct = cleanProductsScanned.map(item => {
       return (
-        <WrapperSingleProduct>
-          <ProductImage src={state[item].ImageUrl} alt="" />
-          <WrapperSingleProductText>
-            <ProductTitle> {state[item].ProductName} </ProductTitle>
-            {state[item].ProductDescription}
-          </WrapperSingleProductText>
-        </WrapperSingleProduct>
+        // <WrapperSingleProduct>
+        //   <ProductImage src={state[item].ImageUrl} alt="" />
+        //   <WrapperSingleProductText>
+        //     <ProductTitle> {state[item].ProductName} </ProductTitle>
+        //     {state[item].ProductDescription}
+        //   </WrapperSingleProductText>
+        // </WrapperSingleProduct>
+        <ImagePreview
+          style={{ backgroundImage: `url(${state[item].ImageUrl})` }}
+        />
+        // <ProductImage src={state[item].ImageUrl} alt="" />
       );
     });
     console.log("htmlProduct", htmlProduct);
@@ -122,17 +144,18 @@ class componentName extends Component {
       );
     } else {
       return (
-        <BlueWrapper>
-          <div>
-            <SectionProducts>Your clean product list </SectionProducts>
-            <div>{this.displayProducts(this.state.cleanProducts)}</div>
-            <SectionProducts>Your dirty product list </SectionProducts>
-            <div>{this.displayProducts(this.state.dirtyProducts)}</div>
-          </div>
-        </BlueWrapper>
+        <div>
+          <SectionProducts>Your clean product list </SectionProducts>
+          <WrapperMultiProduct>
+            {this.displayProducts(this.state.cleanProducts)}
+          </WrapperMultiProduct>
+          <SectionProducts>Your dirty product list </SectionProducts>
+          <WrapperMultiProduct>
+            {this.displayProducts(this.state.dirtyProducts)}
+          </WrapperMultiProduct>
+        </div>
       );
     }
   }
 }
-
 export default componentName;
