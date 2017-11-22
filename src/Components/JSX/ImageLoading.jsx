@@ -8,9 +8,30 @@ import WrapperColumn from "./StyledComponents/WrapperColumn";
 // css declaration with styled component
 
 const Wrapper = styled.div`
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
   justify-content: center;
-  align-content: center;
+  height: 100vh;
+  @keyframes bottom-top {
+    0% {
+      height: 0;
+      opacity: 0;
+    }
+    50% {
+      height: 30px;
+      opacity: 1;
+    }
+    100% {
+      height: 0;
+      opacity: 0;
+    }
+  }
 `;
 
 const ImagePreview = styled.div`
@@ -21,22 +42,74 @@ const ImagePreview = styled.div`
   background-repeat: no-repeat;
   background-position: center;
 `;
+const Progress = styled.div`
+  height: 30px;
+  width: 90px;
+  position: relative;
+`;
+const ProgressChilds = styled.div`
+  background: #04c096;
+  height: 0;
+  position: absolute;
+  bottom: 0;
+  width: 10px;
+  border-radius: 2px;
+`;
+const Child1 = ProgressChilds.extend`
+  left: -15px;
+  -webkit-animation: bottom-top 2s infinite ease-in-out 0s;
+  animation: bottom-top 2s infinite ease-in-out 0s;
+`;
+const Child2 = ProgressChilds.extend`
+  left: 0px;
+  -webkit-animation: bottom-top 2s infinite ease-in-out 0.2s;
+  animation: bottom-top 2s infinite ease-in-out 0.2s;
+`;
+
+const Child3 = ProgressChilds.extend`
+  left: 15px;
+  -webkit-animation: bottom-top 2s infinite ease-in-out 0.4s;
+  animation: bottom-top 2s infinite ease-in-out 0.4s;
+`;
+const Child4 = ProgressChilds.extend`
+  left: 30px;
+  -webkit-animation: bottom-top 2s infinite ease-in-out 0.6s;
+  animation: bottom-top 2s infinite ease-in-out 0.6s;
+`;
+const Child5 = ProgressChilds.extend`
+  left: 45px;
+  -webkit-animation: bottom-top 2s infinite ease-in-out 0.8s;
+  animation: bottom-top 2s infinite ease-in-out 0.8s;
+`;
+const Child6 = ProgressChilds.extend`
+  left: 60px;
+  -webkit-animation: bottom-top 2s infinite ease-in-out 1s;
+  animation: bottom-top 2s infinite ease-in-out 1s;
+`;
+const Child7 = ProgressChilds.extend`
+  left: 75px;
+  -webkit-animation: bottom-top 2s infinite ease-in-out 1.2s;
+  animation: bottom-top 2s infinite ease-in-out 1.2s;
+`;
 
 class ImageLoading extends Component {
   render() {
     return (
-      <BlueWrapper>
-        <WrapperColumn>
-          <h2>image preview</h2>
-          <ImagePreview style={{ backgroundImage: `url(${this.props.url})` }} />
-          <h4>Image being processed</h4>
-          <Wrapper>
-            <div className="loader" />
-          </Wrapper>
-        </WrapperColumn>
-      </BlueWrapper>
+      <Wrapper>
+        <Progress>
+          <Child1 />
+          <Child2 />
+          <Child3 />
+          <Child4 />
+          <Child5 />
+          <Child6 />
+        </Progress>
+      </Wrapper>
     );
   }
 }
 
 export default ImageLoading;
+// <ImagePreview style={{ backgroundImage: `url(${this.props.url})` }} />
+// <h2>image preview</h2>
+// <h4>Image being processed</h4>

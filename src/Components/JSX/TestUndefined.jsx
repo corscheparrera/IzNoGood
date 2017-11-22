@@ -21,7 +21,9 @@ class TestUndefined extends Component {
   render() {
     return (
       <ContainerFlex>
-        <ItemFlex>Please try to reupload a better picture!</ItemFlex>
+        <ItemFlex>
+          We couldn't scan your picture. Try again with a better focus!
+        </ItemFlex>
         <Image src={require("../../icons/surprised.svg")} />
         <Button onClick={this.props.reset}>Retake picture</Button>
       </ContainerFlex>
