@@ -1,59 +1,31 @@
 import React, { Component } from "react";
 import styled, { css } from "styled-components";
-import { Button, Grid, Col, Row } from "react-bootstrap";
-import { Link } from "react-router-dom";
-import "font-awesome/css/font-awesome.css";
+import { Button } from "react-bootstrap";
 
-const styles = {
-  padding: {
-    paddingTop: "50px"
-  },
-  fontStyle: {
-    lineHeight: "1",
-    fontSize: "28px",
-    fontWeight: 200,
-    fontFamily: "Helvetica Neue"
-  },
-  alignHorizontal: {
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center"
-  },
-  alignVertical: {
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center"
-  }
-};
-
+const ContainerFlex = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: "Helvetica Neue";
+  font-size: 28px;
+  font-weight: 200;
+`;
+const ItemFlex = styled.div`
+  width: 300px;
+  max-width: 80%;
+`;
+const Image = styled.img`
+  height: 150px;
+  margin: 40px;
+`;
 class TestUndefined extends Component {
   render() {
     return (
-      <Grid fluid style={styles.fontStyle}>
-        <Row>
-          <Col sm={5} smOffset={4} text-center style={styles.padding}>
-            <div style={styles.alignHorizontal}>
-              We couldn't scan your ingredients. Please try to reupload a better
-              picture!
-            </div>
-            <img
-              src={require("../../icons/surprised.svg")}
-              height="150px"
-              alt=""
-              className="center-block"
-              style={styles.padding}
-            />
-          </Col>
-        </Row>
-
-        <Row>
-          <Col style={{ ...styles.alignHorizontal, ...styles.padding }}>
-            <Button onClick={this.props.reset}>
-              Take a new picture of my product
-            </Button>
-          </Col>
-        </Row>
-      </Grid>
+      <ContainerFlex>
+        <ItemFlex>Please try to reupload a better picture!</ItemFlex>
+        <Image src={require("../../icons/surprised.svg")} />
+        <Button onClick={this.props.reset}>Retake picture</Button>
+      </ContainerFlex>
     );
   }
 }
