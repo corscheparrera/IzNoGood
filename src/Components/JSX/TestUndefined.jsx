@@ -1,28 +1,30 @@
 import React, { Component } from "react";
-import { Nav, Navbar, NavItem } from "react-bootstrap";
-import { LinkContainer } from "react-router-bootstrap";
-import styled from "styled-components";
-// import Undefined from "../../icons/";
+import styled, { css } from "styled-components";
 import { Button } from "react-bootstrap";
-import SadFace from "../../icons/sad.png";
-import BlueWrapper from "./StyledComponents/BlueWrapper";
-import WrapperColumn from "./StyledComponents/WrapperColumn";
 
+const ContainerFlex = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 28px;
+  font-weight: 200;
+`;
+const ItemFlex = styled.div`
+  width: 300px;
+  max-width: 80%;
+`;
+const Image = styled.img`
+  height: 150px;
+  margin: 40px;
+`;
 class TestUndefined extends Component {
   render() {
     return (
-      <BlueWrapper>
-        <WrapperColumn>
-          <h4 style={{ textAlign: "center" }}>
-            We couldn't scan your ingredients. Please try to reupload a better
-            picture or visit our full list of ingredients to check them
-          </h4>
-          <img src={SadFace} height="150px" alt="" />
-          <Button onClick={this.props.reset}>
-            Take a new picture of my product
-          </Button>
-        </WrapperColumn>
-      </BlueWrapper>
+      <ContainerFlex>
+        <ItemFlex>Please try to reupload a better picture!</ItemFlex>
+        <Image src={require("../../icons/surprised.svg")} />
+        <Button onClick={this.props.reset}>Retake picture</Button>
+      </ContainerFlex>
     );
   }
 }

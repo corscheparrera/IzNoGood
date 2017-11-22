@@ -16,93 +16,77 @@ const styles = {
   },
   red: {
     color: "#FF4136"
-  },
-
-  padding: {
-    paddingTop: "20px"
-  },
-  flexParent: {
-    display: "flex",
-    alignItems: "center"
-  },
-  fontStyle: {
-    lineHeight: "1",
-    fontSize: "16px",
-    fontWeight: 200,
-    fontFamily: "Helvetica Neue"
-  },
-  align: {
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center"
   }
 };
+const ContainerFlex = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 28px;
+  font-weight: 200;
+  line-height: 1;
+`;
+const FlexRow = styled.div`
+  display: flex;
+  justify-content: flex-start;
+  font-size: 16px;
+  margin: 15px;
+  font-weight: 200;
+  line-height: 1;
+  padding-left: 30px;
 
+  max-width: 80%;
+`;
+const Item = styled.div`
+  width: 300px;
+  max-width: 70%;
+`;
+const Image = styled.img`
+  height: 150px;
+  margin: 40px;
+`;
 class TestFailed extends Component {
   displayChemicals = item => {
     return (
-      <div
-        style={{
-          ...styles.flexParent,
-          ...styles.fontStyle,
-          ...styles.padding
-        }}
-      >
+      <FlexRow>
         <FontAwesome
           name="flask"
           size="1x"
           style={
-            item.risk <= 4
-              ? { color: styles.yellow.color }
-              : item.risk <= 6
-                ? { color: styles.orange.color }
-                : { color: styles.red.color }
+            item.risk <= 4 ? (
+              { color: styles.yellow.color }
+            ) : item.risk <= 6 ? (
+              { color: styles.orange.color }
+            ) : (
+              { color: styles.red.color }
+            )
           }
         />
-        <div
-          style={{ paddingLeft: "10px" }}
-        >{` ${item.chemical} is an ${item.categorie}`}</div>
-      </div>
+        <div style={{ paddingLeft: "10px" }}>
+          {` ${item.chemical} is an ${item.categorie}`}
+        </div>
+      </FlexRow>
     );
   };
 
   render() {
     return (
-      <Grid fluid style={styles.fontStyle}>
-        <Row>
-          <Col style={styles.padding}>
-            <img
-              src={require("../../icons/thinking.png")}
-              height="150px"
-              alt=""
-              className="center-block"
-              style={styles.padding}
-            />
-          </Col>
-        </Row>
-        <div style={styles.align}>
-          <Row>
-            <Col style={styles.padding}>
-              <div style={{ fontSize: "28px" }}>Suspicious ingredients</div>
-              {this.props.presentChemicals.map(this.displayChemicals)}
-            </Col>
-          </Row>
-          <Row>
-            <Col style={styles.padding}>
-              <div>
-                <Link to="/save/DirtyProducts">
-                  <Button>Save to history</Button>
-                </Link>
-              </div>
-              <div>
-                <Link to="/IngredientList">
-                  <Button style={{ marginTop: "10px" }}>Learn more</Button>
-                </Link>
-              </div>
-            </Col>
-          </Row>
-        </div>
-      </Grid>
+      <div>
+        <ContainerFlex>
+          <Image src={require("../../icons/thinking.svg")} />
+          <div>Suspicious ingredients</div>
+          <div> {this.props.presentChemicals.map(this.displayChemicals)}</div>
+
+          <Link to="/save/DirtyProducts">
+            <Button>Save to history</Button>
+          </Link>
+          <Link to="/IngredientList">
+            <Button style={{ marginTop: "10px", marginBottom: "20px" }}>
+              Learn more
+            </Button>
+          </Link>
+        </ContainerFlex>
+      </div>
     );
   }
 }

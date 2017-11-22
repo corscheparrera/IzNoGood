@@ -4,7 +4,6 @@ import fire from "./Firebase.jsx";
 import Login from "./Login";
 import { Button } from "react-bootstrap";
 import styled from "styled-components";
-import GreenFlag from "../../icons/flag.png";
 import BlueWrapper from "./StyledComponents/BlueWrapper";
 import WrapperColumn from "./StyledComponents/WrapperColumn";
 
