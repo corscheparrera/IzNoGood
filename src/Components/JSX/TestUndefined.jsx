@@ -1,28 +1,59 @@
 import React, { Component } from "react";
-import { Nav, Navbar, NavItem } from "react-bootstrap";
-import { LinkContainer } from "react-router-bootstrap";
-import styled from "styled-components";
-// import Undefined from "../../icons/";
-import { Button } from "react-bootstrap";
-import SadFace from "../../icons/sad.png";
-import BlueWrapper from "./StyledComponents/BlueWrapper";
-import WrapperColumn from "./StyledComponents/WrapperColumn";
+import styled, { css } from "styled-components";
+import { Button, Grid, Col, Row } from "react-bootstrap";
+import { Link } from "react-router-dom";
+import "font-awesome/css/font-awesome.css";
+
+const styles = {
+  padding: {
+    paddingTop: "50px"
+  },
+  fontStyle: {
+    lineHeight: "1",
+    fontSize: "28px",
+    fontWeight: 200,
+    fontFamily: "Helvetica Neue"
+  },
+  alignHorizontal: {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center"
+  },
+  alignVertical: {
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center"
+  }
+};
 
 class TestUndefined extends Component {
   render() {
     return (
-      <BlueWrapper>
-        <WrapperColumn>
-          <h4 style={{ textAlign: "center" }}>
-            We couldn't scan your ingredients. Please try to reupload a better
-            picture or visit our full list of ingredients to check them
-          </h4>
-          <img src={SadFace} height="150px" alt="" />
-          <Button onClick={this.props.reset}>
-            Take a new picture of my product
-          </Button>
-        </WrapperColumn>
-      </BlueWrapper>
+      <Grid fluid style={styles.fontStyle}>
+        <Row>
+          <Col sm={5} smOffset={4} text-center style={styles.padding}>
+            <div style={styles.alignHorizontal}>
+              We couldn't scan your ingredients. Please try to reupload a better
+              picture!
+            </div>
+            <img
+              src={require("../../icons/surprised.svg")}
+              height="150px"
+              alt=""
+              className="center-block"
+              style={styles.padding}
+            />
+          </Col>
+        </Row>
+
+        <Row>
+          <Col style={{ ...styles.alignHorizontal, ...styles.padding }}>
+            <Button onClick={this.props.reset}>
+              Take a new picture of my product
+            </Button>
+          </Col>
+        </Row>
+      </Grid>
     );
   }
 }

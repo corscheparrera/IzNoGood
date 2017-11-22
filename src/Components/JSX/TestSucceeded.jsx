@@ -16,8 +16,8 @@ const styles = {
   },
   alignHorizontal: {
     display: "flex",
-    alignItems: "center",
-    justifyContent: "center"
+    flexDirection: "column",
+    alignItems: "center"
   },
   alignVertical: {
     display: "flex",
@@ -43,7 +43,7 @@ class TestSucceeded extends Component {
           </Col>
         </Row>
         <Row>
-          <Col style={{ ...styles.alignVertical, ...styles.padding }}>
+          <Col style={{ ...styles.alignHorizontal, ...styles.padding }}>
             <Link to="/save/CleanProducts">
               <Button>Save to history</Button>
             </Link>

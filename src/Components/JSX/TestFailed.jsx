@@ -74,7 +74,7 @@ class TestFailed extends Component {
         <Row>
           <Col style={styles.padding}>
             <img
-              src={require("../../icons/thinking.png")}
+              src={require("../../icons/thinking.svg")}
               height="150px"
               alt=""
               className="center-block"
