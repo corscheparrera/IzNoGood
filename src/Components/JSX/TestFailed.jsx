@@ -8,8 +8,8 @@ import "font-awesome/css/font-awesome.css";
 const FontAwesome = require("react-fontawesome");
 
 const styles = {
-  fuchsia: {
-    color: "#F012BE"
+  orange: {
+    color: "#FFA500"
   },
   yellow: {
     color: "#FFDC00"
@@ -52,18 +52,16 @@ class TestFailed extends Component {
           name="flask"
           size="1x"
           style={
-            item.risk <= 4 ? (
-              { color: styles.yellow.color }
-            ) : item.risk <= 6 ? (
-              { color: styles.red.color }
-            ) : (
-              { color: styles.fuchsia.color }
-            )
+            item.risk <= 4
+              ? { color: styles.yellow.color }
+              : item.risk <= 6
+                ? { color: styles.orange.color }
+                : { color: styles.red.color }
           }
         />
         <div
           style={{ paddingLeft: "10px" }}
-        >{` ${item.chemical} is a ${item.categorie}`}</div>
+        >{` ${item.chemical} is an ${item.categorie}`}</div>
       </div>
     );
   };
