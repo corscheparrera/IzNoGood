@@ -6,7 +6,6 @@ const ContainerFlex = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  font-family: "Helvetica Neue";
   font-size: 28px;
   font-weight: 200;
 `;
