@@ -79,7 +79,14 @@ class TestFailed extends Component {
       <ContainerFlex>
         <Image src={require("../../icons/thinking.svg")} />
         <div>Suspicious ingredients</div>
-        <div> {this.props.presentChemicals.map(this.displayChemicals)}</div>
+        <div>
+          {this.props.presentChemicals
+            .sort((a, b) => {
+              return a.risk - b.risk;
+            })
+            .reverse()
+            .map(this.displayChemicals)}
+        </div>
 
         <Link to="/save/DirtyProducts">
           <Button style={styles.btnCustom}>Save to history</Button>
