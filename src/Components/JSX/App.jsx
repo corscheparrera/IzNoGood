@@ -59,6 +59,7 @@ class App extends Component {
 
   handleInput = event => {
     const file = event.target.files[0];
+    console.log("What is this file", file);
     if (!file) return;
     this.setState({ isLoading: true });
     storageRef
@@ -156,7 +157,8 @@ class App extends Component {
             presentChemicals: this.state.presentChemicals.concat({
               chemical: key,
               categorie: val.categorie,
-              reference: val.reference,
+              risk: val.score,
+              link: val.link,
               similarity: stringSimilarity.compareTwoStrings(
                 ingr,
                 val.shortened
@@ -186,6 +188,7 @@ class App extends Component {
           <NavigationForTests
             userName={this.state.user}
             photoUrl={this.state.photoUrl}
+            reset={this.clearState}
           />
 
           <Route
@@ -239,6 +242,7 @@ class App extends Component {
                 uidLogged={this.state.uid}
                 updateLoginState={this.logUser}
                 status={routeProps.match.params.status}
+                historyPush={routeProps.history.push}
               />
             )}
           />

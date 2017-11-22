@@ -1,80 +1,82 @@
-2-bromo-2-nitropropane-1 3 diol ,A verifier
-Bronopol,A verifier
-Alpha-Isomethyl Ionone,Allergen
-Ammonium Lauryl Sulfate,Irritant
-Amyl Cinnamal,Allergen
-Amylcinnamyl Alcohol,Allergen
-Anise Alcohol,Allergen
-Benzophenone-1,Perturbateur endocrinien
-Benzophenone-3,Allergen
-Benzyl Alcohol,Allergen
-Benzyl Benzoate,Allergen
-Benzyl Cinnamate,Allergen
-Benzyl Salicylate,Allergen
-BUTYLPARABEN,A verifier
-BHA,Perturbateur endocrinien
-BHT,Perturbateur endocrinien
-Butylparaben,Perturbateur endocrinien
-Butylphenyl Methylpropional,Allergen
-Cinnamal,Allergen
-Cinnamyl Alcohol,Allergen
-Citral,Allergen
-Citronellol,Allergen
-Coumarin,Allergen
-Cyclomethicone,Perturbateur endocrinien
-Cyclopentasiloxane,Perturbateur endocrinien
-Cyclotetrasiloxane,Perturbateur endocrinien
-diazolidinyl urea,A verifier
-DMDM hydantoin,A verifier
-Ethylhexyl Methoxycinnamate,Perturbateur endocrinien
-Eugenol,Allergen
-Evernia Furfuracea Extract,Allergen
-Evernia Prunastri Extract,Allergen
-Farnesol,Allergen
-FORMALDEHYDE,A verifier
-Geraniol,Allergen
-glyoxal,A verifier
-Hexyl Cinnamal,Allergen
-HYDROQUINONE,A verifier
-Hydroxycitronellal,Allergen
-Hydroxyisohexyl 3-Cyclohexene Carboxaldehyde,Allergen
-ISOBUTYLPARABEN,A verifier
-imidazolidinyl urea,A verifier
-Isoeugenol,Allergen
-Limonene,Allergen
-Linalool,Allergen
-MERCURY,A verifier
-MERTHIOLATE,A verifier
-METHENAMINE,A verifier
-Methyl 2-Octynoate,Allergen
-Methylchloroisothiazolinone,Allergen
-Methylisothiazolinone,Allergen
-METHYLPARABEN,A verifier
-oxaldehyde,A verifier
-P-phenylenediamine,Allergen
-Phenoxyethanol,Allergen
-Phthalates,A verifier
-Potassium Butylparaben,Perturbateur endocrinien
-Potassium Propylparaben,Perturbateur endocrinien
-Propylene Glycol,A verifier
-Propylparaben,Perturbateur endocrinien
-quaternium-15,A verifier
-Sodium Butylparaben,Perturbateur endocrinien
-Sodium Laureth Sulfate,Irritant
-Sodium Lauryl Sulfate,Irritant
-Sodium Propylparaben,Perturbateur endocrinien
-THIMEROSAL,A verifier
-Triclosan,Perturbateur endocrinien
-PETROLATUM,A verifier
-SLES,Irritant
-SLS,Irritant
-Parabens,A verifier
-Coal tar dyes,A verifier
-CI-XXXXX,A verifier
-Dibutyl Phthalate,A verifier
-Siloxanes,A verifier
-Parfum,A verifier
-Oxybenzone,A verifier
-Paraphenylenediamine,A verifier
-Polyethylene glycol,A verifier
-PEG,A verifier
+atranol,Allergen,7,http://www.ewg.org/skindeep/ingredient/702389/EVERNIA_FURFURACEA_%28OAKMOSS_LICHEN%29_EXTRACT/#.WhOPFrSdU_U,,
+2-bromo-2-nitropropane-1 3 diol,Allergen,8,http://www.ewg.org/skindeep/ingredient.php?ingred06=700019#.WhNftrSdVTY,banned in the EU,
+Bronopol,Allergen,8,http://www.ewg.org/skindeep/ingredient.php?ingred06=700019#.WhNftrSdVTY,,
+Bronidiol,Allergen,8,http://www.ewg.org/skindeep/ingredient.php?ingred06=700019#.WhNftrSdVTY,,
+Alpha-Isomethyl Ionone,Allergen,5,http://www.ewg.org/skindeep/ingredient/700295/ALPHA-ISOMETHYL_IONONE/#.WhNgp7SdVTY,,
+Ammonium Lauryl Sulfate,Irritant,1,http://www.ewg.org/skindeep/ingredient/700374/AMMONIUM_LAURYL_SULFATE/#.WhNtOrSdVTY,,
+Amyl Cinnamal,Allergen,7,http://www.ewg.org/skindeep/ingredient/700401/AMYLCINNAMALDEHYDE/#.WhNqU7SdVTY,https://echa.europa.eu/substance-information/-/substanceinfo/100.125.985,
+AMYLCINNAMALDEHYDE,Allergen,7,http://www.ewg.org/skindeep/ingredient/700401/AMYLCINNAMALDEHYDE/#.WhNqU7SdVTY,,
+Amylcinnamyl Alcohol,Allergen,7,http://www.ewg.org/skindeep/ingredient/700399/AMYL_CINNAMYL_ALCOHOL/#.WhNsN7SdVTY,,
+Anise Alcohol,Allergen,5,http://www.ewg.org/skindeep/ingredient/700434/ANISE_ALCOHOL/#.WhNtiLSdVTY,,
+Benzophenone-1,Endocrine disruptor,4,http://www.ewg.org/skindeep/ingredient/700685/BENZOPHENONE-1/#.WhNt47SdVTY,,
+Benzophenone-3,Allergen,8,http://www.ewg.org/skindeep/ingredient/704372/OXYBENZONE/#.WhNulLSdVTY,,
+Benzyl Alcohol,Allergen,5,http://www.ewg.org/skindeep/ingredient/700697/BENZYL_ALCOHOL/#.WhNvArSdVTY,,
+Benzyl Benzoate,Allergen,6,http://www.ewg.org/skindeep/ingredient/700698/BENZYL_BENZOATE/#.WhNvN7SdVTY,,
+Benzyl Cinnamate,Allergen,6,http://www.ewg.org/skindeep/ingredient/700698/BENZYL_BENZOATE/#.WhNvN7SdVTY,,
+Benzyl Salicylate,Allergen,7,http://www.ewg.org/skindeep/ingredient/700701/BENZYL_SALICYLATE/#.WhNvOLSdVTY,,
+BUTYLPARABEN,Endocrine disruptor,7,http://www.ewg.org/skindeep/ingredient/700868/BUTYLPARABEN/#.WhNvtbSdVTY,,
+BHA,Endocrine disruptor,6,http://www.ewg.org/skindeep/ingredient/700740/BHA/#.WhN2VrSdVTY,European Commission on Endocrine Disruption : Human endocrine disruptor - strong evidence ,
+BHT,Endocrine disruptor,4,http://www.ewg.org/skindeep/ingredient/700741/BHT/#.WhN2i7SdVTY,Human endocrine disruptor - strong evidence,
+Butylparaben,Endocrine disruptor,7,http://www.ewg.org/skindeep/ingredient/700868/BUTYLPARABEN/#.WhN2mbSdVTY,,European Commission on Endocrine Disruption
+Butylphenyl Methylpropional,Allergen,7,http://www.ewg.org/skindeep/ingredient/700872/LILIAL/#.WhN3OLSdVTY,Human endocrine disruptor - strong evidence,European Commission on Endocrine Disruption
+Cinnamal,Allergen,7,http://www.ewg.org/skindeep/ingredient/701362/CINNAMAL/#.WhOMgLSdU_U,,
+Cinnamyl Alcohol,Allergen,7,http://www.ewg.org/skindeep/ingredient/701377/CINNAMYL_ALCOHOL/#.WhOMl7SdU_U,,
+Citral,Allergen,7,http://www.ewg.org/skindeep/ingredient/701383/CITRAL/#.WhOMsbSdU_U,,
+Citronellol,Allergen,5,http://www.ewg.org/skindeep/ingredient/701389/CITRONELLOL/#.WhOMzLSdU_U,,
+Coumarin,Allergen,7,http://www.ewg.org/skindeep/ingredient/701686/COUMARIN/#.WhOM5LSdU_U,,
+chloroatranol,Allergen,7,http://www.ewg.org/skindeep/ingredient/702389/EVERNIA_FURFURACEA_%28OAKMOSS_LICHEN%29_EXTRACT/#.WhOPFrSdU_U,,
+Cyclomethicone,Endocrine disruptor,2,http://www.ewg.org/skindeep/ingredient/701738/CYCLOMETHICONE/#.WhONtrSdU_U,,
+Cyclopentasiloxane,Endocrine disruptor,3,http://www.ewg.org/skindeep/ingredient/701741/CYCLOPENTASILOXANE/#.WhON9rSdU_U,,
+Cyclotetrasiloxane,Endocrine disruptor,5,http://www.ewg.org/skindeep/ingredient/701743/CYCLOTETRASILOXANE/#.WhOOOLSdU_U,,
+diazolidinyl urea,Allergen,6,http://www.ewg.org/skindeep/ingredient/701923/DIAZOLIDINYL_UREA_%28FORMALDEHYDE_RELEASER%29/#.WhOOULSdU_U,,
+DMDM hydantoin,Allergen,7,http://www.ewg.org/skindeep/ingredient/702196/DMDM_HYDANTOIN_%28FORMALDEHYDE_RELEASER%29/#.WhOOeLSdU_U,,
+Ethylhexyl Methoxycinnamate,Endocrine disruptor,6,http://www.ewg.org/skindeep/ingredient/704203/OCTINOXATE/#.WhOOj7SdU_U,,
+Eugenol,Allergen,7,http://www.ewg.org/skindeep/ingredient/702373/EUGENOL/#.WhOO_LSdU_U,,
+Evernia Furfuracea Extract,Allergen,7,http://www.ewg.org/skindeep/ingredient/702389/EVERNIA_FURFURACEA_%28OAKMOSS_LICHEN%29_EXTRACT/#.WhOPFrSdU_U,,
+Evernia Prunastri Extract,Allergen,7,http://www.ewg.org/skindeep/ingredient/702390/EVERNIA_PRUNASTRI_%28RING_LICHEN%29_EXTRACT/#.WhOPKbSdU_U,,
+Farnesol,Allergen,4,http://www.ewg.org/skindeep/ingredient/702402/FARNESOL/#.WhOPObSdU_U,,
+FORMALDEHYDE,Carcinogen,10,http://www.ewg.org/skindeep/ingredient/702500/FORMALDEHYDE/#.WhOPSrSdU_U,,
+Geraniol,Allergen,7,http://www.ewg.org/skindeep/ingredient/702568/GERANIOL/#.WhOPnLSdU_U,,
+glyoxal,Allergen,10,http://www.ewg.org/skindeep/search.php?query=glyoxal#.WhOPrLSdU_U,,
+Hexyl Cinnamal,Allergen,5,http://www.ewg.org/skindeep/ingredient/702841/HEXYL_CINNAMAL/#.WhOPyLSdU_U,,
+HICC,Allergen,7,http://www.ewg.org/skindeep/ingredient/703649/LYRAL/#.WhOQibSdU_U,,
+HYDROQUINONE,Respiratory toxicant,9,http://www.ewg.org/skindeep/ingredient/703041/HYDROQUINONE/#.WhOQx7SdU_U,,
+Hydroxycitronellal,Allergen,7,http://www.ewg.org/skindeep/ingredient/703051/HYDROXYCITRONELLAL/#.WhORQrSdU_U,,
+Hydroxyisohexyl 3-Cyclohexene Carboxaldehyde,Allergen,7,http://www.ewg.org/skindeep/ingredient/703649/LYRAL/#.WhOQibSdU_U,,
+ISOBUTYLPARABEN,Endocrine disruptor,7,http://www.ewg.org/skindeep/ingredient/703160/ISOBUTYLPARABEN/#.WhORarSdU_U,,
+imidazolidinyl urea,Allergen,6,http://www.ewg.org/skindeep/ingredient/703119/IMIDAZOLIDINYL_UREA_%28FORMALDEHYDE_RELEASER%29/#.WhORmrSdU_U,,
+Isoeugenol,Allergen,7,http://www.ewg.org/skindeep/ingredient/703181/ISOEUGENOL/#.WhORsLSdU_U,,
+Limonene,Allergen,6,http://www.ewg.org/skindeep/ingredient/702113/LIMONENE/#.WhORzbSdU_U,,
+Lilial,Allergen,7,http://www.ewg.org/skindeep/ingredient/700872/LILIAL/#.WhN3OLSdVTY,,
+Linalool,Allergen,5,http://www.ewg.org/skindeep/ingredient/703568/LINALOOL/#.WhOSDLSdU_U,Possible human immune system toxicant or allergen,EU Banned and Restricted Fragrances
+Lyral,Allergen,7,http://www.ewg.org/skindeep/ingredient/703649/LYRAL/#.WhOQibSdU_U,,
+METHENAMINE,Allergen,8,http://www.ewg.org/skindeep/ingredient/703872/METHENAMINE_%28FORMALDEHYDE_RELEASER%29/#.WhOShLSdU_V,,
+Methyl 2-Octynoate,Allergen,5,http://www.ewg.org/skindeep/ingredient/703885/METHYL_2-OCTYNOATE/#.WhOSnLSdU_U,,
+Methylchloroisothiazolinone,Allergen,6,http://www.ewg.org/skindeep/ingredient/703924/METHYLCHLOROISOTHIAZOLINONE/#.WhOSvbSdU_U,,
+Methylisothiazolinone,Allergen,7,http://www.ewg.org/skindeep/ingredient/703935/METHYLISOTHIAZOLINONE/#.WhOTDbSdU_U,,
+METHYLPARABEN,Endocrine disruptor,4,http://www.ewg.org/skindeep/ingredient/703937/METHYLPARABEN/#.WhOTILSdU_U,,
+Oxybenzone,Allergen,8,http://www.ewg.org/skindeep/ingredient/704372/OXYBENZONE/#.WhNulLSdVTY,,
+octinoxate,Endocrine disruptor,6,http://www.ewg.org/skindeep/ingredient/704203/OCTINOXATE/#.WhOOj7SdU_U,,
+P-phenylenediamine,Allergen,7,http://www.ewg.org/skindeep/ingredient/704389/P-PHENYLENEDIAMINE/#.WhOTZ7SdU_U,,
+Phenoxyethanol,Allergen,4,http://www.ewg.org/skindeep/search.php?query=Phenoxyethanol#.WhOTc7SdU_U,,
+Phthalates,Endocrine disruptor,10,http://www.ewg.org/skindeep/ingredient/701929/DIBUTYL_PHTHALATE/#.WhOTnLSdU_U,,
+Potassium Butylparaben,Endocrine disruptor,7,http://www.ewg.org/skindeep/ingredient/700868/BUTYLPARABEN/#.WhOUD7SdU_U,,
+Potassium Propylparaben,Endocrine disruptor,7,http://www.ewg.org/skindeep/ingredient/705335/PROPYLPARABEN/#.WhOUJbSdU_U,,
+Propylene Glycol,Irritant,3,http://www.ewg.org/skindeep/ingredient/705315/PROPYLENE_GLYCOL/#.WhOUNrSdU_U,,
+Propylparaben,Endocrine disruptor,7,http://www.ewg.org/skindeep/ingredient/705335/PROPYLPARABEN/,,
+quaternium-15,Allergen,8,http://www.ewg.org/skindeep/ingredient/705478/QUATERNIUM-15_%28FORMALDEHYDE_RELEASER%29/#.WhOUi7SdU_U,,
+Sodium Butylparaben,Endocrine disruptor,7,http://www.ewg.org/skindeep/ingredient/700868/BUTYLPARABEN/#.WhNvtbSdVTY,,
+Sodium Laureth Sulfate,Irritant,3,http://www.ewg.org/skindeep/ingredient/706089/SODIUM_LAURETH_SULFATE/#.WhOVCLSdU_U,,
+Sodium Lauryl Sulfate,Irritant,2,http://www.ewg.org/skindeep/ingredient/706110/SODIUM_LAURYL_SULFATE/#.WhOVOrSdU_U,,
+Sodium Propylparaben,Endocrine disruptor,7,http://www.ewg.org/skindeep/ingredient/705335/PROPYLPARABEN/,,
+THIMEROSAL,Nervous system toxicant,10,http://www.ewg.org/skindeep/ingredient/706528/THIMEROSAL/#.WhOVp7SdU_U,,
+Triclosan,Endocrine disruptor,7,http://www.ewg.org/skindeep/ingredient/706623/TRICLOSAN/#.WhOV37SdU_U,,
+SLES,Irritant,3,http://www.ewg.org/skindeep/ingredient/706089/SODIUM_LAURETH_SULFATE/#.WhOVCLSdU_U,,
+SLS,Irritant,2,http://www.ewg.org/skindeep/ingredient/706110/SODIUM_LAURYL_SULFATE/#.WhOVOrSdU_U,,
+Dibutyl Phthalate,Endocrine disruptor,10,http://www.ewg.org/skindeep/ingredient/701929/DIBUTYL_PHTHALATE/#.WhOTnLSdU_U,,
+BUTYL BENZYL PHTHALATE,Endocrine disruptor,10,http://www.ewg.org/skindeep/ingredient/717096/BUTYL_BENZYL_PHTHALATE/#.WhOTvbSdU_U,,
+Parfum,Allergen,8,http://www.ewg.org/skindeep/ingredient/702512/FRAGRANCE/#.WhOWsrSdU_U,,
+Fragrance,Allergen,8,http://www.ewg.org/skindeep/ingredient/702512/FRAGRANCE/#.WhOWsrSdU_U,,
+Oxybenzone,Allergen,8,http://www.ewg.org/skindeep/ingredient/704372/OXYBENZONE/#.WhOW5LSdU_U,,
+Polyethylene glycol,Irritant,3,http://www.ewg.org/skindeep/ingredient/704983/POLYETHYLENE_GLYCOL/#.WhOXfbSdU_U,,
+PEG,Irritant,3,http://www.ewg.org/skindeep/ingredient/704983/POLYETHYLENE_GLYCOL/#.WhOXfbSdU_U,,
