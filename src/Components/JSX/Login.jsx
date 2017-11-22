@@ -1,14 +1,23 @@
 import React, { Component } from "react";
 import * as firebase from "firebase";
 import fire from "./Firebase.jsx";
-import { Button, Jumbotron } from "react-bootstrap";
-import "../CSS/Account.css";
-import BlueWrapper from "./StyledComponents/BlueWrapper";
-import WrapperColumn from "./StyledComponents/WrapperColumn";
-
+import GoogleButton from "react-google-button";
+import styled, { css } from "styled-components";
 const providerGoogle = new firebase.auth.GoogleAuthProvider();
 const database = firebase.database();
 
+const ContainerFlex = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  justify-content: space-around;
+  font-size: 28px;
+  font-weight: 200;
+  text-align: center;
+  height: 60vh;
+`;
+const FlexItem = styled.div`width: 300px;`;
 class Login extends Component {
   logIn = provider => {
     firebase.auth().signInWithRedirect(provider);
@@ -43,18 +52,14 @@ class Login extends Component {
 
   render() {
     return (
-      <Jumbotron>
-        <h1>Please sign in</h1>
-        <p>You will have access to all functionalities of Dirti.</p>
-        <p>
-          <Button
-            className="loginBtn loginBtn--google"
-            onClick={() => this.logIn(providerGoogle)}
-          >
-            Google
-          </Button>
-        </p>
-      </Jumbotron>
+      <ContainerFlex>
+        <FlexItem>
+          <h1>Please sign in</h1>
+          <p>to access all functionalities of Dirti.</p>
+          <p />
+        </FlexItem>
+        <GoogleButton onClick={() => this.logIn(providerGoogle)} />
+      </ContainerFlex>
     );
   }
 }
