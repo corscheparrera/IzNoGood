@@ -50,6 +50,9 @@
 .navbar-default .navbar-nav > .active > a {
   background-color: transparent !important;
 }
+.navbar-default .navbar-collapse {
+  border-color: transparent !important;
+}
 @media only screen and (min-width: 100px) {
   .collapse {
     display: block;
