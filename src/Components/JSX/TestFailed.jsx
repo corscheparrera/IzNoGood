@@ -36,7 +36,6 @@ const FlexRow = styled.div`
   margin: 15px;
   font-weight: 200;
   line-height: 1;
-  padding-left: 30px;
 `;
 const Item = styled.div`
   width: 300px;
