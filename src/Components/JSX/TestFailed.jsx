@@ -85,7 +85,7 @@ class TestFailed extends Component {
             .reverse()
             .map(this.displayChemicals)}
         </div>
-        <FlexRow>
+        <FlexRow style={{ paddingLeft: "0px" }}>
           <div style={{ paddingRight: "10px" }}>Toxicity: </div>
           <FontAwesome
             name="flask"
