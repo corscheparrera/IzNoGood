@@ -13,6 +13,7 @@
     "path": "^0.12.7",
     "quagga": "^0.12.1",
     "react": "^16.1.1",
+    "react-animations": "^1.0.0",
     "react-bootstrap": "^0.31.5",
     "react-dom": "^16.1.1",
     "react-fontawesome": "^1.6.1",

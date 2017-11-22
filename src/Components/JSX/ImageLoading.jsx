@@ -1,8 +1,17 @@
 import React, { Component } from "react";
 import "bootstrap/dist/css/bootstrap.css";
-import styled, { css } from "styled-components";
+import styled, { css, keyframes } from "styled-components";
 import BlueWrapper from "./StyledComponents/BlueWrapper";
 import WrapperColumn from "./StyledComponents/WrapperColumn";
+import { pulse } from "react-animations";
+
+const pulseAnimation = keyframes`${pulse}`;
+
+const PulseText = styled.div`
+  animation: 1s ${pulseAnimation};
+  width: 300px;
+  padding-top: 20vh;
+`;
 
 // css declaration with styled component
 const ContainerFlex = styled.div`
@@ -61,38 +70,34 @@ const ProgressChilds = styled.div`
   width: 10px;
   border-radius: 2px;
 `;
+
 const Child1 = ProgressChilds.extend`
-  left: -15px;
-  -webkit-animation: bottom-top 2s infinite ease-in-out 0s;
-  animation: bottom-top 2s infinite ease-in-out 0s;
-`;
-const Child2 = ProgressChilds.extend`
   left: 0px;
   -webkit-animation: bottom-top 2s infinite ease-in-out 0.2s;
   animation: bottom-top 2s infinite ease-in-out 0.2s;
 `;
 
-const Child3 = ProgressChilds.extend`
+const Child2 = ProgressChilds.extend`
   left: 15px;
   -webkit-animation: bottom-top 2s infinite ease-in-out 0.4s;
   animation: bottom-top 2s infinite ease-in-out 0.4s;
 `;
-const Child4 = ProgressChilds.extend`
+const Child3 = ProgressChilds.extend`
   left: 30px;
   -webkit-animation: bottom-top 2s infinite ease-in-out 0.6s;
   animation: bottom-top 2s infinite ease-in-out 0.6s;
 `;
-const Child5 = ProgressChilds.extend`
+const Child4 = ProgressChilds.extend`
   left: 45px;
   -webkit-animation: bottom-top 2s infinite ease-in-out 0.8s;
   animation: bottom-top 2s infinite ease-in-out 0.8s;
 `;
-const Child6 = ProgressChilds.extend`
+const Child5 = ProgressChilds.extend`
   left: 60px;
   -webkit-animation: bottom-top 2s infinite ease-in-out 1s;
   animation: bottom-top 2s infinite ease-in-out 1s;
 `;
-const Child7 = ProgressChilds.extend`
+const Child6 = ProgressChilds.extend`
   left: 75px;
   -webkit-animation: bottom-top 2s infinite ease-in-out 1.2s;
   animation: bottom-top 2s infinite ease-in-out 1.2s;
@@ -102,7 +107,7 @@ class ImageLoading extends Component {
   render() {
     return (
       <ContainerFlex>
-        <div style={{ paddingTop: "20vh" }}>Image being processed...</div>
+        <PulseText> Image being processed...</PulseText>
         <Wrapper>
           <Progress>
             <Child1 />
