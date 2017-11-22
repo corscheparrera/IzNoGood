@@ -219,7 +219,7 @@ class App extends Component {
           <Route exact path="/IngredientList" component={IngredientList} />
           <Route
             exact
-            path="/Account"
+            path="/Account.html"
             render={() => (
               <Account
                 userLogged={this.state.user}
