@@ -212,12 +212,7 @@ class App extends Component {
               ) {
                 return <TestSucceeded reset={this.clearState} />;
               } else {
-                return (
-                  <Grid>
-                    {/*<Barcode handleBarcode={this.handleBarcode} />*/}
-                    <InputFile updateUploadImage={this.handleInput} />
-                  </Grid>
-                );
+                return <InputFile updateUploadImage={this.handleInput} />;
               }
             }}
           />

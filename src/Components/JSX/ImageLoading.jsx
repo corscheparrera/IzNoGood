@@ -1,12 +1,18 @@
 import React, { Component } from "react";
 import "bootstrap/dist/css/bootstrap.css";
 import styled, { css } from "styled-components";
-import "../CSS/ImageLoading.css";
 import BlueWrapper from "./StyledComponents/BlueWrapper";
 import WrapperColumn from "./StyledComponents/WrapperColumn";
 
 // css declaration with styled component
-
+const ContainerFlex = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 28px;
+  font-weight: 200;
+  line-height: 1;
+`;
 const Wrapper = styled.div`
   display: -webkit-box;
   display: -ms-flexbox;
@@ -17,7 +23,7 @@ const Wrapper = styled.div`
   -webkit-box-pack: center;
   -ms-flex-pack: center;
   justify-content: center;
-  height: 100vh;
+  height: 200px;
   @keyframes bottom-top {
     0% {
       height: 0;
@@ -48,7 +54,7 @@ const Progress = styled.div`
   position: relative;
 `;
 const ProgressChilds = styled.div`
-  background: #04c096;
+  background: #000000;
   height: 0;
   position: absolute;
   bottom: 0;
@@ -95,16 +101,19 @@ const Child7 = ProgressChilds.extend`
 class ImageLoading extends Component {
   render() {
     return (
-      <Wrapper>
-        <Progress>
-          <Child1 />
-          <Child2 />
-          <Child3 />
-          <Child4 />
-          <Child5 />
-          <Child6 />
-        </Progress>
-      </Wrapper>
+      <ContainerFlex>
+        <div style={{ paddingTop: "20vh" }}>Image being processed...</div>
+        <Wrapper>
+          <Progress>
+            <Child1 />
+            <Child2 />
+            <Child3 />
+            <Child4 />
+            <Child5 />
+            <Child6 />
+          </Progress>
+        </Wrapper>
+      </ContainerFlex>
     );
   }
 }

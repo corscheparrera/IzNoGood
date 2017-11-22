@@ -1,46 +1,42 @@
 import React, { Component } from "react";
-import "bootstrap/dist/css/bootstrap.css";
-import styled from "styled-components";
-import { Button, Row, Col, FormGroup, FormControl } from "react-bootstrap";
-import BlueWrapper from "./StyledComponents/BlueWrapper";
-import WrapperColumn from "./StyledComponents/WrapperColumn";
-import Plus from "../../icons/icons8-plus.svg";
-import Template from "../../icons/picture-instructions.jpg";
+import styled, { css } from "styled-components";
+import { Button, FormGroup, FormControl } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
-const Instructions = styled.h3`
-  font-size: 20px;
+const styles = {
+  displayNone: {
+    display: "none"
+  }
+};
+const Input = styled.label`focus: none !important;`;
+const ContainerFlex = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 28px;
   font-weight: 200;
 `;
-
-const InstructionPicture = styled.img`
-  height: 300px;
-  margin-top: 30px;
+const ItemFlex = styled.div`
+  width: 300px;
+  max-width: 80%;
 `;
-
+const Image = styled.img`
+  height: 280px;
+  margin: 20px;
+`;
 class InputFile extends Component {
   render() {
     return (
-      <div>
-        <Row>
-          <Col sm={4} smOffset={4} className="text-center">
-            <InstructionPicture src={Template} alt="" />
-            <label className="fileUpload">
-              <Instructions>
-                Take a picture of your products ingredients
-              </Instructions>
-
-              <img src={Plus} alt="" />
-
-              <FormGroup className="displayNone">
-                <FormControl
-                  type="file"
-                  onChange={this.props.updateUploadImage}
-                />
-              </FormGroup>
-            </label>
-          </Col>
-        </Row>
-      </div>
+      <ContainerFlex>
+        <ItemFlex>Take a picture of your product ingredients</ItemFlex>
+        <Image src={require("../../icons/picture-instructions.jpg")} />
+        <Input>
+          <img src={require("../../icons/icons8-plus.svg")} />
+          <FormGroup style={styles.displayNone}>
+            <FormControl type="file" onChange={this.props.updateUploadImage} />
+          </FormGroup>
+        </Input>
+      </ContainerFlex>
     );
   }
 }

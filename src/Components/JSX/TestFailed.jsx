@@ -71,22 +71,20 @@ class TestFailed extends Component {
 
   render() {
     return (
-      <div>
-        <ContainerFlex>
-          <Image src={require("../../icons/thinking.svg")} />
-          <div>Suspicious ingredients</div>
-          <div> {this.props.presentChemicals.map(this.displayChemicals)}</div>
+      <ContainerFlex>
+        <Image src={require("../../icons/thinking.svg")} />
+        <div>Suspicious ingredients</div>
+        <div> {this.props.presentChemicals.map(this.displayChemicals)}</div>
 
-          <Link to="/save/DirtyProducts">
-            <Button>Save to history</Button>
-          </Link>
-          <Link to="/IngredientList">
-            <Button style={{ marginTop: "10px", marginBottom: "20px" }}>
-              Learn more
-            </Button>
-          </Link>
-        </ContainerFlex>
-      </div>
+        <Link to="/save/DirtyProducts">
+          <Button>Save to history</Button>
+        </Link>
+        <Link to="/IngredientList">
+          <Button style={{ marginTop: "10px", marginBottom: "20px" }}>
+            Learn more
+          </Button>
+        </Link>
+      </ContainerFlex>
     );
   }
 }
