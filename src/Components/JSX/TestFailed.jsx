@@ -39,8 +39,6 @@ const FlexRow = styled.div`
   font-weight: 200;
   line-height: 1;
   padding-left: 30px;
-
-  max-width: 80%;
 `;
 const Item = styled.div`
   width: 300px;
@@ -68,7 +66,7 @@ class TestFailed extends Component {
           }
         />
         <div style={{ paddingLeft: "10px" }}>
-          {` ${item.chemical} is an ${item.categorie}`}
+          {` ${item.chemical}  (${item.categorie})`}
         </div>
       </FlexRow>
     );
@@ -87,7 +85,31 @@ class TestFailed extends Component {
             .reverse()
             .map(this.displayChemicals)}
         </div>
+        <FlexRow>
+          <div style={{ paddingRight: "10px" }}>Toxicity: </div>
+          <FontAwesome
+            name="flask"
+            size="1x"
+            style={{ color: styles.yellow.color }}
+          />
+          <div style={{ paddingLeft: "10px", paddingRight: "10px" }}>Low</div>
 
+          <FontAwesome
+            name="flask"
+            size="1x"
+            style={{ color: styles.orange.color }}
+          />
+          <div style={{ paddingLeft: "10px", paddingRight: "10px" }}>
+            Medium
+          </div>
+
+          <FontAwesome
+            name="flask"
+            size="1x"
+            style={{ color: styles.red.color }}
+          />
+          <div style={{ paddingLeft: "10px", paddingRight: "10px" }}>High</div>
+        </FlexRow>
         <Link to="/save/DirtyProducts">
           <Button style={styles.btnCustom}>Save to history</Button>
         </Link>
@@ -97,6 +119,7 @@ class TestFailed extends Component {
         <Link to="/IngredientList">
           <Button style={styles.btnCustom}>Learn more</Button>
         </Link>
+        <div />
       </ContainerFlex>
     );
   }
