@@ -18,7 +18,7 @@ const ContainerFlex = styled.div`
   font-size: 28px;
   font-weight: 200;
 `;
-const ItemFlex = styled.div`max-width: 80%;`;
+const ItemFlex = styled.div`text-align: center;`;
 const Image = styled.img`
   height: 280px;
   margin: 20px;

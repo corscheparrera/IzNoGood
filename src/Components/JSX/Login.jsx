@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import * as firebase from "firebase";
 import fire from "./Firebase.jsx";
-import { Button } from "react-bootstrap";
+import { Button, Jumbotron } from "react-bootstrap";
 import "../CSS/Account.css";
 import BlueWrapper from "./StyledComponents/BlueWrapper";
 import WrapperColumn from "./StyledComponents/WrapperColumn";
@@ -43,23 +43,18 @@ class Login extends Component {
 
   render() {
     return (
-      <BlueWrapper>
-        <WrapperColumn>
-          <h1>Please log in</h1>
-          {/* <Button
-            className="loginBtn loginBtn--facebook"
-            onClick={() => this.logIn(providerFacebook)}
-          >
-            Facebook
-          </Button> */}
+      <Jumbotron>
+        <h1>Please sign in</h1>
+        <p>You will have access to all functionalities of Dirti.</p>
+        <p>
           <Button
             className="loginBtn loginBtn--google"
             onClick={() => this.logIn(providerGoogle)}
           >
             Google
           </Button>
-        </WrapperColumn>
-      </BlueWrapper>
+        </p>
+      </Jumbotron>
     );
   }
 }
