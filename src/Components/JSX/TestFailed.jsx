@@ -3,9 +3,7 @@ import "bootstrap/dist/css/bootstrap.css";
 import styled, { css } from "styled-components";
 import { Button, Grid, Col, Row } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import "font-awesome/css/font-awesome.css";
-
-const FontAwesome = require("react-fontawesome");
+import Beaker from "react-icons/lib/fa/flask";
 
 const styles = {
   orange: {
@@ -52,9 +50,9 @@ class TestFailed extends Component {
   displayChemicals = item => {
     return (
       <FlexRow>
-        <FontAwesome
-          name="flask"
-          size="1x"
+        <Beaker
+          icon="ios-flask-outlinfontSize="
+          size="16px"
           style={
             item.risk <= 4 ? (
               { color: styles.yellow.color }
@@ -87,25 +85,25 @@ class TestFailed extends Component {
         </div>
         <FlexRow style={{ paddingLeft: "0px" }}>
           <div style={{ paddingRight: "10px" }}>Toxicity: </div>
-          <FontAwesome
-            name="flask"
-            size="1x"
+          <Beaker
+            icon="flask"
+            fontSize="16px"
             style={{ color: styles.yellow.color }}
           />
           <div style={{ paddingLeft: "10px", paddingRight: "10px" }}>Low</div>
 
-          <FontAwesome
-            name="flask"
-            size="1x"
+          <Beaker
+            icon="flask"
+            fontSize="16px"
             style={{ color: styles.orange.color }}
           />
           <div style={{ paddingLeft: "10px", paddingRight: "10px" }}>
             Medium
           </div>
 
-          <FontAwesome
-            name="flask"
-            size="1x"
+          <Beaker
+            icon="flask"
+            fontSize="16px"
             style={{ color: styles.red.color }}
           />
           <div style={{ paddingLeft: "10px", paddingRight: "10px" }}>High</div>
