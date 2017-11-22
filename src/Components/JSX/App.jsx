@@ -59,6 +59,7 @@ class App extends Component {
 
   handleInput = event => {
     const file = event.target.files[0];
+    console.log("What is this file", file);
     if (!file) return;
     this.setState({ isLoading: true });
     storageRef
@@ -186,6 +187,7 @@ class App extends Component {
           <NavigationForTests
             userName={this.state.user}
             photoUrl={this.state.photoUrl}
+            reset={this.clearState}
           />
 
           <Route

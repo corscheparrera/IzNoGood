@@ -17,7 +17,7 @@ class Navigation extends Component {
       return (
         <Navbar id="navbar" fluid>
           <Navbar.Header>
-            <Link to="/">
+            <Link to="/" onClick={this.props.reset}>
               <img alt="" src={require("../../icons/dna.svg")} />
             </Link>
           </Navbar.Header>
@@ -38,7 +38,7 @@ class Navigation extends Component {
       return (
         <Navbar id="navbar" collapseOnSelect fluid>
           <Navbar.Header>
-            <Link to="/">
+            <Link to="/" onClick={this.props.reset}>
               <img
                 alt=""
                 className="logo"
