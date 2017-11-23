@@ -1,11 +1,11 @@
 {
-  "name": "IzNoGood",
-  "short_name": "IzNoGood",
+  "name": "Dirti.ca",
+  "short_name": "Dirti.ca",
   "lang": "fr",
   "start_url": "/?utm_source=homescreen",
   "display": "standalone",
-  "theme_color": "#e2faff",
-  "background_color": "#e2faff",
+  "theme_color": "#ffffff",
+  "background_color": "#ffffff",
   "icons": [
     {
       "src": "/android-chrome-192x192.png",
@@ -13,8 +13,8 @@
       "type": "image/png"
     },
     {
-      "src": "/android-chrome-256x256.png",
-      "sizes": "256x256",
+      "src": "/android-chrome-512x512.png",
+      "sizes": "512x512",
       "type": "image/png"
     }
   ]

@@ -26,12 +26,13 @@ const database = firebase.database();
 const InstructionPicture = styled.img`
   height: 300px;
   margin-top: 30px;
-  margin-bottom: 30px;
+  margin-bottom: 15px;
 `;
 
 const Instructions = styled.h3`
   font-size: 20px;
   font-weight: 200;
+  margin-bottom: 10px;
 `;
 
 const InputWrapperCentered = styled.label`
@@ -82,9 +83,7 @@ class SaveMyProduct extends Component {
       },
       (blob, didItResize) => {
         // didItResize will be true if it managed to resize it, otherwise false (and will return the original file as 'blob')
-        console.log("fiestetp", file);
         const randomNumber = Math.floor(Math.random() * 10000000);
-        console.log("random", randomNumber);
         storageRef
           .ref()
           .child(`${randomNumber}${file.name}`)
@@ -126,7 +125,7 @@ class SaveMyProduct extends Component {
           <div>
             <label style={{ textAlign: "center" }} for="file-input">
               <Instructions>
-                Take a picture of your product to save it
+                Take a <strong>front</strong> picture of your product to save it
               </Instructions>
 
               <img src={Plus} />

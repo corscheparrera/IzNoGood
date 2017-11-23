@@ -87,7 +87,6 @@ class componentName extends Component {
     if (this.props.userLogged) {
       this.updateDatabase();
     }
-    console.log("Chemicals", this.props.presentChemicals);
   }
 
   componentDidUpdate(prevProps, prevState) {
@@ -100,7 +99,6 @@ class componentName extends Component {
     database
       .ref(`userProducts/${this.props.uidLogged}/CleanProducts`)
       .once("value", result => {
-        console.log("cleanProduct", result.val());
         this.setState({ cleanProducts: result.val() });
       })
       .then(this.displayProducts);
@@ -109,7 +107,6 @@ class componentName extends Component {
       .ref(`userProducts/${this.props.uidLogged}/DirtyProducts`)
       .once("value")
       .then(result => {
-        console.log("dirtyProduct", result.val());
         this.setState({ dirtyProducts: result.val() });
       })
       .then(this.displayProducts);
@@ -144,7 +141,6 @@ class componentName extends Component {
         </ImagePreview>
       );
     });
-    console.log("htmlProduct", htmlProduct);
     return htmlProduct;
   };
 

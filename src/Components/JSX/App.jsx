@@ -45,7 +45,6 @@ class App extends Component {
   }
 
   logUser = user => {
-    console.log("log User updated");
     this.setState({
       user: user.displayName,
       uid: user.uid,
@@ -59,7 +58,6 @@ class App extends Component {
 
   handleInput = event => {
     const file = event.target.files[0];
-    console.log("What is this file", file);
     if (!file) return;
     this.setState({ isLoading: true });
     storageRef
@@ -93,7 +91,6 @@ class App extends Component {
   };
 
   storeGoogleVisionRes = visionString => {
-    console.log(visionString);
     var ingredients = visionString
       .toLowerCase()
       .replace(/:|\.|""/g, ",")
@@ -104,7 +101,6 @@ class App extends Component {
 
     // Get a database reference
     var ref = db.ref("userInputs");
-    console.log(visionString);
     ref
       .set({
         ingredients: ingredients
@@ -152,7 +148,6 @@ class App extends Component {
     for (const [key, val] of iterableObj) {
       this.state.ingredients.map(ingr => {
         if (stringSimilarity.compareTwoStrings(ingr, val.shortened) > 0.8) {
-          console.log("HEY DUDE, WATCH OUT, " + key + " IS GONNA KILL U!");
           this.setState({
             presentChemicals: this.state.presentChemicals.concat({
               chemical: key,
@@ -171,7 +166,6 @@ class App extends Component {
   };
 
   clearState = () => {
-    console.log("clearstate");
     this.setState({
       isLoading: false,
       ingredients: [],

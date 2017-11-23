@@ -31,7 +31,9 @@ class InputFile extends Component {
     return (
       <ContainerFlex>
         <Image src={require("../../icons/picture-instructions.jpg")} />
-        <ItemFlex>Take a picture of your product ingredients</ItemFlex>
+        <ItemFlex>
+          Take a <strong>clear </strong>picture of your product ingredients
+        </ItemFlex>
         <Input>
           <img src={require("../../icons/icons8-plus.svg")} />
           <FormGroup style={styles.displayNone}>
