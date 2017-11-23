@@ -1,6 +1,6 @@
 import * as firebase from "firebase";
 import React, { Component } from "react";
-import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { BrowserRouter, HashRouter, Route, Switch } from "react-router-dom";
 import "../CSS/App.css";
 import "bootstrap/dist/css/bootstrap.css";
 import { Grid } from "react-bootstrap";
@@ -183,7 +183,7 @@ class App extends Component {
 
   render() {
     return (
-      <BrowserRouter>
+      <HashRouter>
         <div>
           <NavigationForTests
             userName={this.state.user}
@@ -219,12 +219,14 @@ class App extends Component {
           <Route exact path="/IngredientList" component={IngredientList} />
           <Route
             exact
-            path="/Account.html"
-            render={() => (
+            path="/Account"
+            render={routeProps => (
               <Account
+                presentChemicals={this.state.presentChemicals}
                 userLogged={this.state.user}
                 updateLoginState={this.logUser}
                 uidLogged={this.state.uid}
+                historyPush={routeProps.history.push}
               />
             )}
           />
@@ -233,6 +235,7 @@ class App extends Component {
             path="/save/:status"
             render={routeProps => (
               <SaveMyProduct
+                presentChemicals={this.state.presentChemicals}
                 userLogged={this.state.user}
                 uidLogged={this.state.uid}
                 updateLoginState={this.logUser}
@@ -242,7 +245,7 @@ class App extends Component {
             )}
           />
         </div>
-      </BrowserRouter>
+      </HashRouter>
     );
   }
 }

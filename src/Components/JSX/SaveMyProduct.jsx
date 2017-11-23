@@ -56,22 +56,15 @@ class SaveMyProduct extends Component {
     });
   }
 
-  // clickAddProduct = () => {
-  //   // const userId = this.props.currentUserId;
-  //   const productDescription = this.inputProductDescription.value;
-  //   const ProductName = this.inputProductName.value;
+  getRiskIndice = () => {
+    let riskArray = this.props.presentChemicals
+      .sort((a, b) => {
+        return a.risk - b.risk;
+      })
+      .reverse();
 
-  //   const productToUpload = {
-  //     ProductDescription: productDescription,
-  //     ProductName: ProductName,
-  //     ImageUrl:
-  //       "https://images-na.ssl-images-amazon.com/images/I/41c-e971xoL._SY355_.jpg"
-  //   };
-
-  //   database
-  //     .ref(`userProducts/${this.props.uidLogged}/${this.props.status}`)
-  //     .push(productToUpload);
-  // };
+    return riskArray[0].risk;
+  };
 
   handleProductToSave = event => {
     // check if file exists
@@ -105,7 +98,10 @@ class SaveMyProduct extends Component {
                   .ref(
                     `userProducts/${this.props.uidLogged}/${this.props.status}`
                   )
-                  .push({ ImageUrl: this.state.uploadImageUrl });
+                  .push({
+                    ImageUrl: this.state.uploadImageUrl,
+                    Risk: this.getRiskIndice()
+                  });
               })
               .then(() => this.props.historyPush("/Account"));
           });

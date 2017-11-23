@@ -23,7 +23,7 @@ class Navigation extends Component {
           </Navbar.Header>
           <Navbar.Collapse>
             <Nav pullRight>
-              <LinkContainer to="/Account.html">
+              <LinkContainer to="/Account">
                 <img
                   className="undefinedAccount"
                   alt=""
@@ -48,10 +48,10 @@ class Navigation extends Component {
           </Navbar.Header>
           <Navbar.Collapse>
             <Nav pullRight>
-              <LinkContainer to="/Account.html">
+              <LinkContainer to="/Account">
                 <img alt="" className="logo" src={this.props.photoUrl} />
               </LinkContainer>
-              <LinkContainer to="/Account.html">
+              <LinkContainer to="/Account">
                 <NavItem eventKey={1}>{this.props.userName}</NavItem>
               </LinkContainer>
             </Nav>

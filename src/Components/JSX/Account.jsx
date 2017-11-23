@@ -9,7 +9,6 @@ import WrapperColumn from "./StyledComponents/WrapperColumn";
 
 const database = firebase.database();
 const providerGoogle = new firebase.auth.GoogleAuthProvider();
-// const providerFacebook = new firebase.auth.FacebookAuthProvider();
 
 const ImagePreview = styled.div`
   transform: rotate(90deg);
@@ -21,35 +20,13 @@ const ImagePreview = styled.div`
   margin: 1px;
 `;
 
-// const ProductImage = styled.img`
-//   transform: rotate(90deg);
-//   height: 120px;
-//   width: 160px;
-//   border: solid 1px darkgrey;
-//   margin: 2px;
-// `;
-
 const WrapperMultiProduct = styled.div`
+  margin-top: 30px;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  align-items: center;
 `;
-
-// const WrapperSingleProduct = styled.div`
-//   margin-left: 15px;
-//   margin-bottom: 15px;
-//   display: flex;
-//   justify-content: flex-start;
-//   padding: 8px;
-//   border-width: thin;
-//   border-bottom: 1px solid lightgrey;
-// `;
-// const WrapperSingleProductText = styled.div`
-//   display: flex;
-//   margin-left: 5px;
-//   flex-direction: column;
-//   font-size: 12px;
-// `;
 
 const SectionProducts = styled.h4`
   padding: 10px 0px;
@@ -59,11 +36,14 @@ const SectionProducts = styled.h4`
   background-color: #edeeef;
 `;
 
-// const ProductTitle = styled.span`
-// font-weight: bold;
-// text-transform: uppercase;
-// font-syze:12px;
-// }`;
+const AddButton = styled.button`
+  width: 150px;
+  height: 150px;
+  border: dashed 1px black;
+  margin: 1px;
+  background-color: transparent;
+`;
+const AddButtonDirty = AddButton.extend`background-color: transparent;`;
 
 class componentName extends Component {
   constructor() {
@@ -84,6 +64,7 @@ class componentName extends Component {
     if (this.props.userLogged) {
       this.updateDatabase();
     }
+    console.log("Chemicals", this.props.presentChemicals);
   }
 
   componentDidUpdate(prevProps, prevState) {
@@ -107,7 +88,8 @@ class componentName extends Component {
       .then(result => {
         console.log("dirtyProduct", result.val());
         this.setState({ dirtyProducts: result.val() });
-      });
+      })
+      .then(this.displayProducts);
   };
 
   displayProducts = state => {
@@ -116,22 +98,13 @@ class componentName extends Component {
 
     let htmlProduct = cleanProductsScanned.map(item => {
       return (
-        // <WrapperSingleProduct>
-        //   <ProductImage src={state[item].ImageUrl} alt="" />
-        //   <WrapperSingleProductText>
-        //     <ProductTitle> {state[item].ProductName} </ProductTitle>
-        //     {state[item].ProductDescription}
-        //   </WrapperSingleProductText>
-        // </WrapperSingleProduct>
         <ImagePreview
           style={{ backgroundImage: `url(${state[item].ImageUrl})` }}
         />
-        // <ProductImage src={state[item].ImageUrl} alt="" />
       );
     });
     console.log("htmlProduct", htmlProduct);
     return htmlProduct;
-    // <li>{`${item.ProductName} : ${item.ProductDescription}`}</li>;
   };
 
   render() {
@@ -147,11 +120,25 @@ class componentName extends Component {
         <div>
           <SectionProducts>Your clean product list </SectionProducts>
           <WrapperMultiProduct>
-            {this.displayProducts(this.state.cleanProducts)}
+            <AddButton
+              onClick={() => this.props.historyPush("/save/CleanProducts")}
+            >
+              <img src={require("../../icons/icons8-plus.svg")} alt="" />
+            </AddButton>
+            {this.state.cleanProducts
+              ? this.displayProducts(this.state.cleanProducts)
+              : "No product saved yet"}
           </WrapperMultiProduct>
-          <SectionProducts>Your dirty product list </SectionProducts>
+          <SectionProducts>Your suspicious product list </SectionProducts>
           <WrapperMultiProduct>
-            {this.displayProducts(this.state.dirtyProducts)}
+            <AddButton
+              onClick={() => this.props.historyPush("/save/DirtyProducts")}
+            >
+              <img src={require("../../icons/icons8-plus.svg")} alt="" />
+            </AddButton>
+            {this.state.dirtyProducts
+              ? this.displayProducts(this.state.dirtyProducts)
+              : null}
           </WrapperMultiProduct>
         </div>
       );
