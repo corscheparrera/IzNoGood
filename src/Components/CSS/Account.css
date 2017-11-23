@@ -3,10 +3,8 @@
   margin: 2px;
 }
 
-.overlayflask {
+.delete {
   margin: 2px;
   width: 30px;
   height: 30px;
-  background: rgba(255, 255, 255, 0.8);
-  border-radius: 50%;
 }

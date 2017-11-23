@@ -33,6 +33,7 @@ const Instructions = styled.h3`
   font-size: 20px;
   font-weight: 200;
   margin-bottom: 10px;
+  width: 300px;
 `;
 
 const InputWrapperCentered = styled.label`
