@@ -57,6 +57,8 @@ class SaveMyProduct extends Component {
   }
 
   getRiskIndice = () => {
+    if (this.props.presentChemicals.length === 0) return 0;
+
     let riskArray = this.props.presentChemicals
       .sort((a, b) => {
         return a.risk - b.risk;

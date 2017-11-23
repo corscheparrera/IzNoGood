@@ -3,9 +3,11 @@ import * as firebase from "firebase";
 import fire from "./Firebase.jsx";
 import Login from "./Login";
 import { Button } from "react-bootstrap";
+import "../CSS/Account.css";
 import styled from "styled-components";
 import BlueWrapper from "./StyledComponents/BlueWrapper";
 import WrapperColumn from "./StyledComponents/WrapperColumn";
+import Beaker from "react-icons/lib/fa/flask";
 
 const database = firebase.database();
 const providerGoogle = new firebase.auth.GoogleAuthProvider();
@@ -17,7 +19,8 @@ const ImagePreview = styled.div`
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
-  margin: 1px;
+  margin: 10px;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 `;
 
 const WrapperMultiProduct = styled.div`
@@ -44,6 +47,26 @@ const AddButton = styled.button`
   background-color: transparent;
 `;
 const AddButtonDirty = AddButton.extend`background-color: transparent;`;
+
+const styles = {
+  orange: {
+    color: "#FFA500"
+  },
+  green: {
+    color: "#009900"
+  },
+  yellow: {
+    color: "#FFDC00"
+  },
+  red: {
+    color: "#FF4136"
+  },
+  btnCustom: {
+    width: "120px",
+    height: "40px",
+    margin: "10px"
+  }
+};
 
 class componentName extends Component {
   constructor() {
@@ -100,7 +123,25 @@ class componentName extends Component {
       return (
         <ImagePreview
           style={{ backgroundImage: `url(${state[item].ImageUrl})` }}
-        />
+        >
+          <div className="overlayflask">
+            <Beaker
+              className="iconRisk"
+              fontSize="25px"
+              style={
+                state[item].Risk <= 2
+                  ? {
+                      color: styles.green.color
+                    }
+                  : state[item].Risk <= 4
+                    ? { color: styles.yellow.color }
+                    : state[item].Risk <= 6
+                      ? { color: styles.orange.color }
+                      : { color: styles.red.color }
+              }
+            />
+          </div>
+        </ImagePreview>
       );
     });
     console.log("htmlProduct", htmlProduct);
@@ -120,25 +161,15 @@ class componentName extends Component {
         <div>
           <SectionProducts>Your clean product list </SectionProducts>
           <WrapperMultiProduct>
-            <AddButton
-              onClick={() => this.props.historyPush("/save/CleanProducts")}
-            >
-              <img src={require("../../icons/icons8-plus.svg")} alt="" />
-            </AddButton>
             {this.state.cleanProducts
               ? this.displayProducts(this.state.cleanProducts)
-              : "No product saved yet"}
+              : "No clean product saved yet"}
           </WrapperMultiProduct>
           <SectionProducts>Your suspicious product list </SectionProducts>
           <WrapperMultiProduct>
-            <AddButton
-              onClick={() => this.props.historyPush("/save/DirtyProducts")}
-            >
-              <img src={require("../../icons/icons8-plus.svg")} alt="" />
-            </AddButton>
             {this.state.dirtyProducts
               ? this.displayProducts(this.state.dirtyProducts)
-              : null}
+              : "No suspicious product saved yet"}
           </WrapperMultiProduct>
         </div>
       );
