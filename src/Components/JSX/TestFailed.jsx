@@ -21,6 +21,7 @@ const styles = {
     margin: "10px"
   }
 };
+
 const ContainerFlex = styled.div`
   display: flex;
   flex-direction: column;
@@ -28,6 +29,7 @@ const ContainerFlex = styled.div`
   font-size: 28px;
   font-weight: 200;
   line-height: 1;
+  padding-bottom: 20px;
 `;
 const FlexRow = styled.div`
   display: flex;
@@ -50,8 +52,7 @@ class TestFailed extends Component {
     return (
       <FlexRow>
         <Beaker
-          icon="ios-flask-outlinfontSize="
-          size="16px"
+          fontSize="16px"
           style={
             item.risk <= 4 ? (
               { color: styles.yellow.color }
@@ -84,27 +85,15 @@ class TestFailed extends Component {
         </div>
         <FlexRow style={{ paddingLeft: "0px" }}>
           <div style={{ paddingRight: "10px" }}>Toxicity: </div>
-          <Beaker
-            icon="flask"
-            fontSize="16px"
-            style={{ color: styles.yellow.color }}
-          />
+          <Beaker fontSize="16px" style={{ color: styles.yellow.color }} />
           <div style={{ paddingLeft: "10px", paddingRight: "10px" }}>Low</div>
 
-          <Beaker
-            icon="flask"
-            fontSize="16px"
-            style={{ color: styles.orange.color }}
-          />
+          <Beaker fontSize="16px" style={{ color: styles.orange.color }} />
           <div style={{ paddingLeft: "10px", paddingRight: "10px" }}>
             Medium
           </div>
 
-          <Beaker
-            icon="flask"
-            fontSize="16px"
-            style={{ color: styles.red.color }}
-          />
+          <Beaker fontSize="16px" style={{ color: styles.red.color }} />
           <div style={{ paddingLeft: "10px", paddingRight: "10px" }}>High</div>
         </FlexRow>
         <Link to="/save/DirtyProducts">

@@ -8,7 +8,10 @@ const styles = {
     display: "none"
   }
 };
-const Input = styled.label`focus: none !important;`;
+const Input = styled.label`
+  focus: none !important;
+  margin: 20px;
+`;
 
 const ContainerFlex = styled.div`
   display: flex;
@@ -21,14 +24,14 @@ const ContainerFlex = styled.div`
 const ItemFlex = styled.div`text-align: center;`;
 const Image = styled.img`
   height: 280px;
-  margin: 20px;
+  margin: 10px;
 `;
 class InputFile extends Component {
   render() {
     return (
       <ContainerFlex>
-        <ItemFlex>Take a picture of your product ingredients</ItemFlex>
         <Image src={require("../../icons/picture-instructions.jpg")} />
+        <ItemFlex>Take a picture of your product ingredients</ItemFlex>
         <Input>
           <img src={require("../../icons/icons8-plus.svg")} />
           <FormGroup style={styles.displayNone}>
