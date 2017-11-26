@@ -14,7 +14,6 @@ import TestSucceeded from "./TestSucceeded";
 import TestFailed from "./TestFailed";
 import TestUndefined from "./TestUndefined";
 import fire from "./Firebase.jsx";
-import Barcode from "./Barcode.jsx";
 import styled, { css } from "styled-components";
 import stringSimilarity from "string-similarity";
 const storageRef = firebase.storage();

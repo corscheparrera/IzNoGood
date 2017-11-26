@@ -8,6 +8,7 @@ import styled from "styled-components";
 import BlueWrapper from "./StyledComponents/BlueWrapper";
 import WrapperColumn from "./StyledComponents/WrapperColumn";
 import Beaker from "react-icons/lib/fa/flask";
+import Delete from "react-icons/lib/ti/delete-outline";
 
 const database = firebase.database();
 const providerGoogle = new firebase.auth.GoogleAuthProvider();
@@ -39,15 +40,6 @@ const SectionProducts = styled.h4`
   background-color: #edeeef;
 `;
 
-const AddButton = styled.button`
-  width: 150px;
-  height: 150px;
-  border: dashed 1px black;
-  margin: 1px;
-  background-color: transparent;
-`;
-const AddButtonDirty = AddButton.extend`background-color: transparent;`;
-
 const styles = {
   orange: {
     color: "#FFA500"
@@ -65,6 +57,16 @@ const styles = {
     width: "120px",
     height: "40px",
     margin: "10px"
+  },
+  iconRisk: {
+    transform: "rotate(270deg)",
+    margin: "2px"
+  },
+
+  delete: {
+    margin: "2px",
+    width: "30px",
+    height: "30px"
   }
 };
 
@@ -111,8 +113,19 @@ class componentName extends Component {
       })
       .then(this.displayProducts);
   };
-
-  displayProducts = state => {
+  deleteProduct = (stateKey, itemId) => {
+    console.log(itemId);
+    const productRef = stateKey.charAt(0).toUpperCase() + stateKey.substr(1);
+    let updatedProducts = { ...this.state[stateKey] }; //Clone this.state.cleanProducts or this.state.dirtyProducts into updatedProducts
+    delete updatedProducts[itemId]; //remove the item from updatedProducts
+    if (Object.keys(updatedProducts).length === 0) updatedProducts = null;
+    database
+      .ref(`userProducts/${this.props.uidLogged}/${productRef}/${itemId}`)
+      .remove()
+      .then(() => this.setState({ [stateKey]: updatedProducts }));
+  };
+  displayProducts = stateKey => {
+    const state = this.state[stateKey];
     if (!state) return;
     const cleanProductsScanned = Object.keys(state);
 
@@ -121,23 +134,37 @@ class componentName extends Component {
         <ImagePreview
           style={{ backgroundImage: `url(${state[item].ImageUrl})` }}
         >
-          <div className="overlayflask">
-            <Beaker
-              className="iconRisk"
-              fontSize="25px"
-              style={
-                state[item].Risk <= 2
-                  ? {
-                      color: styles.green.color
-                    }
-                  : state[item].Risk <= 4
-                    ? { color: styles.yellow.color }
-                    : state[item].Risk <= 6
-                      ? { color: styles.orange.color }
-                      : { color: styles.red.color }
-              }
-            />
-          </div>
+          <button onClick={() => this.deleteProduct(stateKey, item)}>
+            <Delete fontSize="25px" />
+          </button>
+
+          <Beaker
+            style={styles.iconRisk}
+            fontSize="25px"
+            style={
+              state[item].Risk <= 2 ? (
+                {
+                  color: styles.green.color,
+                  transform: styles.iconRisk.transform
+                }
+              ) : state[item].Risk <= 4 ? (
+                {
+                  color: styles.yellow.color,
+                  transform: styles.iconRisk.transform
+                }
+              ) : state[item].Risk <= 6 ? (
+                {
+                  color: styles.orange.color,
+                  transform: styles.iconRisk.transform
+                }
+              ) : (
+                {
+                  color: styles.red.color,
+                  transform: styles.iconRisk.transform
+                }
+              )
+            }
+          />
         </ImagePreview>
       );
     });
@@ -157,15 +184,19 @@ class componentName extends Component {
         <div>
           <SectionProducts>Your clean product list </SectionProducts>
           <WrapperMultiProduct>
-            {this.state.cleanProducts
-              ? this.displayProducts(this.state.cleanProducts)
-              : "No clean product saved yet"}
+            {this.state.cleanProducts ? (
+              this.displayProducts("cleanProducts")
+            ) : (
+              "No clean product saved yet"
+            )}
           </WrapperMultiProduct>
           <SectionProducts>Your suspicious product list </SectionProducts>
           <WrapperMultiProduct>
-            {this.state.dirtyProducts
-              ? this.displayProducts(this.state.dirtyProducts)
-              : "No suspicious product saved yet"}
+            {this.state.dirtyProducts ? (
+              this.displayProducts("dirtyProducts")
+            ) : (
+              "No suspicious product saved yet"
+            )}
           </WrapperMultiProduct>
         </div>
       );
