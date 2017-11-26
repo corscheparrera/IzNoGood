@@ -1,0 +1,10 @@
+.iconRisk {
+  transform: rotate(270deg);
+  margin: 2px;
+}
+
+.delete {
+  margin: 2px;
+  width: 30px;
+  height: 30px;
+}
